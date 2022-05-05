@@ -1,10 +1,15 @@
 import React from 'react';
 import Svg, { Path } from 'react-native-svg';
+
 import { COLORS } from 'src/theme/colors';
 
-export const Character = ({focused, color = COLORS.GRAY , colorInFocus = COLORS.INDIGO}: any) => (
+export const Character = ({
+  focused = false,
+  color = COLORS.GRAY,
+  colorInFocus = COLORS.INDIGO,
+}) => (
   <Svg width="28" height="28" fill="none">
-    {!focused ?
+    {!focused ? (
       <>
         <Path
           d="M10.92 14.97a2.22 2.22 0 1 0 0-4.45 2.22 2.22 0 0 0 0 4.45ZM17.59 14.97a2.22 2.22 0 1 0 0-4.45 2.22 2.22 0 0 0 0 4.45Z"
@@ -16,7 +21,7 @@ export const Character = ({focused, color = COLORS.GRAY , colorInFocus = COLORS.
           strokeWidth="2"
         />
       </>
-      :
+    ) : (
       <>
         <Path
           fillRule="evenodd"
@@ -25,6 +30,6 @@ export const Character = ({focused, color = COLORS.GRAY , colorInFocus = COLORS.
           fill={colorInFocus}
         />
       </>
-    }
+    )}
   </Svg>
 );
