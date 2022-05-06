@@ -21,7 +21,7 @@ export const EpisodeStack = () => {
           name={Routes.EpisodeScreen}
           component={EpisodeScreen}
           options={{
-            header: (props) => {
+            header: props => {
               const title = 'Episode';
 
               return (
@@ -48,12 +48,19 @@ export const EpisodeStack = () => {
           }}
         />
       </Stack.Group>
-      <Stack.Group screenOptions={{ presentation: 'modal', gestureEnabled: false }}>
+      <Stack.Group
+        screenOptions={{ presentation: 'modal', gestureEnabled: false }}>
         <Stack.Screen
           name={Routes.EpisodeFilter}
           component={EpisodeFilter}
           options={{
-            header: () => <HeaderFilter title={'Filter'} left={<ButtonClear type={'episode'}/>} right={<ButtonApply type={'episode'}/>}/>
+            header: () => (
+              <HeaderFilter
+                title={'Filter'}
+                left={<ButtonClear type={'episode'} />}
+                right={<ButtonApply type={'episode'} />}
+              />
+            ),
           }}
         />
       </Stack.Group>

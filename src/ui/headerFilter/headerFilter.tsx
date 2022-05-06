@@ -12,13 +12,9 @@ export const HeaderFilter: FC<HeaderProps> = ({ left, title, right }) => {
   return (
     <SafeAreaView>
       <Container>
-        <ButtonInner>
-          {left}
-        </ButtonInner>
+        <ButtonInner>{left}</ButtonInner>
         <Title>{title}</Title>
-        <ButtonInner>
-          {right}
-        </ButtonInner>
+        <ButtonInner>{right}</ButtonInner>
       </Container>
     </SafeAreaView>
   );

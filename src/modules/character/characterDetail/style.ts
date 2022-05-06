@@ -29,7 +29,7 @@ export const SubTitle = styled(Text)`
   font-size: 17px;
   line-height: 22px;
   letter-spacing: -0.41px;
-  color: ${COLORS.BLACK};
+  color: ${COLORS.DARK};
 `;
 export const Info = styled(Text)`
   font-weight: 400;

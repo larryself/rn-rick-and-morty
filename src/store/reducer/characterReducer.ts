@@ -8,10 +8,10 @@ enum Character {
 }
 
 interface CharacterState {
-  name: string ;
-  species: string ;
-  status: string ;
-  gender: string ;
+  name: string;
+  species: string;
+  status: string;
+  gender: string;
   apply_filter: boolean;
 }
 
@@ -30,7 +30,7 @@ interface CharacterAction {
 
 export const characterReducer = (
   state = initialState,
-  action: CharacterAction,
+  action: CharacterAction
 ): CharacterState => {
   switch (action.type) {
     case Character.SET_NAME_CHARACTER:
@@ -46,10 +46,16 @@ export const characterReducer = (
       return { ...state, gender: action.payload };
 
     case Character.APPLY_CHARACTER:
-      return {...state, apply_filter: true}
+      return { ...state, apply_filter: true };
 
     case Character.CLEAR_CHARACTER:
-      return { name: '', species: '', status: '', gender: '', apply_filter: false };
+      return {
+        name: '',
+        species: '',
+        status: '',
+        gender: '',
+        apply_filter: false,
+      };
 
     default:
       return state;

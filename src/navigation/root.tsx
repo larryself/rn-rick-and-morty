@@ -10,8 +10,7 @@ export const RootNavigation = () => {
     <React.Fragment>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        initialRouteName={Routes.MainNavigator}
-      >
+        initialRouteName={Routes.MainNavigator}>
         <Stack.Screen name={Routes.MainNavigator} component={TabBar} />
       </Stack.Navigator>
     </React.Fragment>

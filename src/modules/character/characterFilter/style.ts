@@ -8,6 +8,4 @@ export const Container = styled(View)`
   background: ${COLORS.WHITE};
 `;
 
-export const Inner = styled(View)`
-
-`;
+export const Inner = styled(View)``;

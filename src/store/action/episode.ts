@@ -21,7 +21,7 @@ export const setEpisode =
 export const applyEpisode = () => (dispatch: Dispatch<EpisodeAction>) => {
   dispatch({
     type: EpisodeActionTypes.APPLY_EPISODE,
-  })
+  });
 };
 
 export const clearEpisode = () => (dispatch: Dispatch<EpisodeAction>) => {
@@ -29,4 +29,3 @@ export const clearEpisode = () => (dispatch: Dispatch<EpisodeAction>) => {
     type: EpisodeActionTypes.CLEAR_EPISODE,
   });
 };
-

@@ -31,11 +31,12 @@ export type CharacterTabParamList = {
 export type RootStackScreenProps<RouteName extends keyof RootStackParamList> =
   StackScreenProps<RootStackParamList, RouteName>;
 
-export type CharacterTabScreenProps<RouteName extends keyof CharacterTabParamList> =
-  CompositeScreenProps<
-    BottomTabScreenProps<CharacterTabParamList, RouteName>,
-    RootStackScreenProps<keyof RootStackParamList>
-  >;
+export type CharacterTabScreenProps<
+  RouteName extends keyof CharacterTabParamList
+> = CompositeScreenProps<
+  BottomTabScreenProps<CharacterTabParamList, RouteName>,
+  RootStackScreenProps<keyof RootStackParamList>
+>;
 
 export type EpisodeTabScreenProps<RouteName extends keyof EpisodeTabParamList> =
   CompositeScreenProps<
@@ -43,8 +44,9 @@ export type EpisodeTabScreenProps<RouteName extends keyof EpisodeTabParamList> =
     RootStackScreenProps<keyof RootStackParamList>
   >;
 
-export type LocationTabScreenProps<RouteName extends keyof LocationTabParamList> =
-  CompositeScreenProps<
-    BottomTabScreenProps<LocationTabParamList, RouteName>,
-    RootStackScreenProps<keyof RootStackParamList>
-  >;
+export type LocationTabScreenProps<
+  RouteName extends keyof LocationTabParamList
+> = CompositeScreenProps<
+  BottomTabScreenProps<LocationTabParamList, RouteName>,
+  RootStackScreenProps<keyof RootStackParamList>
+>;

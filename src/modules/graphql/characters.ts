@@ -1,20 +1,27 @@
 import { gql, useQuery } from '@apollo/client';
-import { CharacterField, CharactersField, EpisodesField, LocationsField } from 'src/modules/graphql/fragments';
+import {
+  CharacterField,
+  CharactersField,
+  EpisodesField,
+  LocationsField,
+} from 'src/modules/graphql/fragments';
 
 const CHARACTERS = gql`
-${CharactersField}
+  ${CharactersField}
   query getCharacters(
     $name: String
     $species: String
     $gender: String
     $status: String
+  ) {
+    characters(
+      filter: {
+        name: $name
+        species: $species
+        gender: $gender
+        status: $status
+      }
     ) {
-    characters (filter:{
-      name: $name
-      species: $species
-      gender: $gender
-      status: $status
-    }){
       results {
         ...characters
       }
@@ -23,12 +30,12 @@ ${CharactersField}
 `;
 
 const CHARACTER = gql`
-${CharacterField}
-${EpisodesField}
-${LocationsField}
+  ${CharacterField}
+  ${EpisodesField}
+  ${LocationsField}
   query getCharacter($id: ID!) {
     character(id: $id) {
-    ...character
+      ...character
       origin {
         name
       }
@@ -42,7 +49,12 @@ ${LocationsField}
   }
 `;
 
-export const useCharactersQuery = (name = '', status = '', gender = '', species = '') => {
+export const useCharactersQuery = (
+  name = '',
+  status = '',
+  gender = '',
+  species = ''
+) => {
   return useQuery(CHARACTERS, { variables: { name, status, gender, species } });
 };
 

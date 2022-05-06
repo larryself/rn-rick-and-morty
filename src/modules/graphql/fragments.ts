@@ -7,15 +7,17 @@ export const CharactersField = gql`
     status
     image
     species
-}`;
+  }
+`;
 
 export const CharacterField = gql`
-${CharactersField}
+  ${CharactersField}
   fragment character on Character {
     ...characters
     type
     gender
-}`;
+  }
+`;
 
 export const EpisodesField = gql`
   fragment episodes on Episode {
@@ -23,7 +25,8 @@ export const EpisodesField = gql`
     air_date
     name
     episode
-}`;
+  }
+`;
 
 export const LocationsField = gql`
   fragment locations on Location {
@@ -31,5 +34,5 @@ export const LocationsField = gql`
     type
     name
     dimension
-}`;
-
+  }
+`;

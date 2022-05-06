@@ -9,17 +9,20 @@ import { Container, Inner } from './style';
 
 export const CharacterFilter = () => {
   const { species, status, gender, name } = useSelector(
-    (state) => state.character,
+    state => state.character
   );
   const { setStatus, setGender, setSpecies } = useActions();
   const { data } = useCharactersQuery();
   const characters = data?.characters.results;
-  console.log('name', characters.map((character) => character.name))
+  console.log(
+    'name',
+    characters.map(character => character.name)
+  );
   const handleStatus = (value: string) => {
     if (value !== status) {
       setStatus(value);
     } else {
-      setStatus('')
+      setStatus('');
     }
   };
 
@@ -27,7 +30,7 @@ export const CharacterFilter = () => {
     if (value !== gender) {
       setGender(value);
     } else {
-      setGender('')
+      setGender('');
     }
   };
 
@@ -35,7 +38,7 @@ export const CharacterFilter = () => {
     if (value !== species) {
       setSpecies(value);
     } else {
-      setSpecies('')
+      setSpecies('');
     }
   };
 
@@ -46,7 +49,7 @@ export const CharacterFilter = () => {
           title={'Name'}
           guide={'Give a name'}
           selected={name}
-          list={characters.map((character) => character.name)}
+          list={characters.map(character => character.name)}
         />
         <Select
           title={'Species'}

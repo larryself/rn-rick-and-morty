@@ -1,6 +1,5 @@
 import { Text, TouchableOpacity, View } from 'react-native';
 import styled from 'styled-components/native';
-
 import { COLORS } from 'src/theme/colors';
 
 export const Inner = styled(View)`
@@ -11,7 +10,7 @@ export const Inner = styled(View)`
 export const Line = styled(View)`
   width: 100%;
   opacity: 0.2;
-  background: #000000;
+  background: ${COLORS.BLACK};
   height: 0.5px;
 `;
 
@@ -33,5 +32,5 @@ export const SelectText = styled(Text)`
   font-size: 17px;
   line-height: 22px;
   letter-spacing: -0.41px;
-  color: ${COLORS.BLACK};
+  color: ${COLORS.DARK};
 `;

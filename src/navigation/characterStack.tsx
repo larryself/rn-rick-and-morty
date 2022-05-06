@@ -21,7 +21,7 @@ export const CharacterStack = () => {
           name={Routes.CharacterScreen}
           component={CharacterScreen}
           options={{
-            header: (props) => {
+            header: props => {
               const title = 'Character';
               return (
                 <Header
@@ -47,13 +47,19 @@ export const CharacterStack = () => {
           }}
         />
       </Stack.Group>
-      <Stack.Group screenOptions={{ presentation: 'modal', gestureEnabled: false}}>
+      <Stack.Group
+        screenOptions={{ presentation: 'modal', gestureEnabled: false }}>
         <Stack.Screen
           name={Routes.CharacterFilter}
           component={CharacterFilter}
-
           options={{
-            header: () => <HeaderFilter title={'Filter'} left={<ButtonClear type={'character'}/>} right={<ButtonApply type={'character'}/>}/>
+            header: () => (
+              <HeaderFilter
+                title={'Filter'}
+                left={<ButtonClear type={'character'} />}
+                right={<ButtonApply type={'character'} />}
+              />
+            ),
           }}
         />
       </Stack.Group>

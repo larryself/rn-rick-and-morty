@@ -1,6 +1,11 @@
 import { Dispatch } from 'react';
 
-import { CharacterAction, CharacterActionTypes, LocationAction, LocationActionTypes } from '../types';
+import {
+  CharacterAction,
+  CharacterActionTypes,
+  LocationAction,
+  LocationActionTypes,
+} from '../types';
 
 export const setNameLocation =
   (type: string, name: string) => (dispatch: Dispatch<LocationAction>) => {
@@ -26,10 +31,10 @@ export const setDimension =
     });
   };
 
-export const applyLocation= () => (dispatch: Dispatch<LocationAction>) => {
+export const applyLocation = () => (dispatch: Dispatch<LocationAction>) => {
   dispatch({
     type: LocationActionTypes.APPLY_LOCATION,
-  })
+  });
 };
 
 export const clearLocation = () => (dispatch: Dispatch<LocationAction>) => {

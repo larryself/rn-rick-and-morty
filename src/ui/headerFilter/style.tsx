@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, View } from 'react-native';
 import styled from 'styled-components/native';
 
 import { COLORS } from 'src/theme/colors';
@@ -19,7 +19,7 @@ export const Title = styled(Text)`
   font-size: 15px;
   line-height: 20px;
   letter-spacing: -0.24px;
-  color: ${COLORS.BLACK};
+  color: ${COLORS.DARK};
   flex: 1;
   text-align: center;
 `;

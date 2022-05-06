@@ -2,7 +2,7 @@ import { gql, useQuery } from '@apollo/client';
 import { CharactersField, EpisodesField } from 'src/modules/graphql/fragments';
 
 const EPISODES = gql`
-${EpisodesField}
+  ${EpisodesField}
   query getEpisodes {
     episodes {
       results {
@@ -13,8 +13,8 @@ ${EpisodesField}
 `;
 
 const EPISODE = gql`
-${EpisodesField}
-${CharactersField}
+  ${EpisodesField}
+  ${CharactersField}
   query getEpisode($id: ID!) {
     episode(id: $id) {
       ...episodes
@@ -24,7 +24,6 @@ ${CharactersField}
     }
   }
 `;
-
 
 export const useEpisodesQuery = () => {
   return useQuery(EPISODES);

@@ -1,6 +1,11 @@
 import { Dispatch } from 'react';
 
-import { CharacterAction, CharacterActionTypes, EpisodeAction, EpisodeActionTypes } from '../types';
+import {
+  CharacterAction,
+  CharacterActionTypes,
+  EpisodeAction,
+  EpisodeActionTypes,
+} from '../types';
 
 export const setNameCharacter =
   (name: string) => (dispatch: Dispatch<CharacterAction>) => {
@@ -34,12 +39,11 @@ export const setGender =
     });
   };
 
-export const applyCharacter= () => (dispatch: Dispatch<CharacterAction>) => {
+export const applyCharacter = () => (dispatch: Dispatch<CharacterAction>) => {
   dispatch({
     type: CharacterActionTypes.APPLY_CHARACTER,
-  })
+  });
 };
-
 
 export const clearCharacter = () => (dispatch: Dispatch<CharacterAction>) => {
   dispatch({

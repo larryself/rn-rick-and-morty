@@ -1,13 +1,12 @@
 import React, { FC, useState } from 'react';
-import { Modal, SafeAreaView, View } from 'react-native';
+import { View } from 'react-native';
 import { Arrow } from 'assets/images/icons/arrow';
 import { ModalMenu } from 'src/ui/modal/modal';
-
 import { SelectList } from '../selectList/selectList';
 import {
   Container,
-  Curcle,
-  CurcleChecked,
+  Circle,
+  CircleChecked,
   Guide,
   Inner,
   Line,
@@ -33,16 +32,16 @@ export const Select: FC<SelectProps> = ({
 
   const typeSelect = (item: string) => {
     onSelect(item);
-    setVisible((state) => !state);
+    setVisible(state => !state);
   };
 
   return (
     <>
       <Line />
-      <Container onPress={() => setVisible((state) => !state)}>
-        <Curcle selected={selected}>
-          <CurcleChecked selected={selected} />
-        </Curcle>
+      <Container onPress={() => setVisible(state => !state)}>
+        <Circle selected={selected}>
+          <CircleChecked selected={selected} />
+        </Circle>
         <Inner>
           <View>
             <Title>{title}</Title>

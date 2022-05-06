@@ -2,12 +2,12 @@ enum Episode {
   'SET_NAME_EPISODE' = 'SET_NAME_EPISODE',
   'SET_EPISODE' = 'SET_EPISODE',
   'CLEAR_EPISODE' = 'CLEAR_EPISODE',
-  'APPLY_EPISODE' = 'APPLY_EPISODE'
+  'APPLY_EPISODE' = 'APPLY_EPISODE',
 }
 
 interface EpisodeState {
-  name: string ;
-  episode: string ;
+  name: string;
+  episode: string;
   apply_filter: boolean;
 }
 
@@ -24,7 +24,7 @@ interface EpisodeAction {
 
 export const episodeReducer = (
   state = initialState,
-  action: EpisodeAction,
+  action: EpisodeAction
 ): EpisodeState => {
   switch (action.type) {
     case Episode.SET_NAME_EPISODE:

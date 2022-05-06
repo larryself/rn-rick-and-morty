@@ -1,8 +1,9 @@
 export enum COLORS {
+  'BLACK' = '#000000',
   'WHITE' = '#ffffff',
   'GRAY' = '#A3A3A3',
   'INDIGO' = '#5856D6',
-  'BLACK' = '#081F32',
+  'DARK' = '#081F32',
   'GRAY_1' = '#8E8E93',
   'GRAY_2' = '#C7C7CC',
   'GRAY_4' = '#AEAEB2',

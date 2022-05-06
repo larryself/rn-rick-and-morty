@@ -14,15 +14,14 @@ export const Header: FC<HeaderProps> = ({ title, stack, filter }) => {
   const { navigate } = useNavigation();
   const [showModal, setShowModal] = useState(false);
   return (
-    <SafeAreaView >
+    <SafeAreaView>
       <Container>
         <Button
           onPress={() =>
             navigate(stack, {
               screen: filter,
             })
-          }
-        >
+          }>
           <ButtonText>Filter</ButtonText>
         </Button>
         <Title>{title}</Title>

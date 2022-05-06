@@ -9,11 +9,11 @@ interface IModalMenu {
 }
 
 export const ModalMenu: FC<IModalMenu> = ({
-                                            showModal,
-                                            setShowModal,
-                                            children,
-                                          }) => {
-  const closeModal = () => setShowModal(false)
+  showModal,
+  setShowModal,
+  children,
+}) => {
+  const closeModal = () => setShowModal(false);
 
   return (
     <StyledModal
@@ -28,10 +28,8 @@ export const ModalMenu: FC<IModalMenu> = ({
       useNativeDriver
       hideModalContentWhileAnimating>
       <KeyboardAvoidingView behavior={'position'} enabled>
-        <Container>
-          {children}
-        </Container>
+        <Container>{children}</Container>
       </KeyboardAvoidingView>
     </StyledModal>
-  )
+  );
 };

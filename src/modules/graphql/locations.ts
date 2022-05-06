@@ -2,17 +2,9 @@ import { gql, useQuery } from '@apollo/client';
 import { CharactersField, LocationsField } from 'src/modules/graphql/fragments';
 
 const LOCATIONS = gql`
-${LocationsField}
-  query getLocations(
-  $name: String
-  $type: String
-  $dimension: String
-  ) {
-    locations(filter: {
-      name: $name
-      type: $type
-      dimension: $dimension
-    }) {
+  ${LocationsField}
+  query getLocations($name: String, $type: String, $dimension: String) {
+    locations(filter: { name: $name, type: $type, dimension: $dimension }) {
       results {
         ...locations
       }
@@ -21,8 +13,8 @@ ${LocationsField}
 `;
 
 const LOCATION = gql`
-${CharactersField}
-${LocationsField}
+  ${CharactersField}
+  ${LocationsField}
   query getLocation($id: ID!) {
     location(id: $id) {
       ...locations

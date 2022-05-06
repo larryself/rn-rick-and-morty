@@ -13,7 +13,7 @@ export const Title = styled(Text)`
   font-size: 34px;
   line-height: 41px;
   letter-spacing: 0.41px;
-  color: ${COLORS.BLACK};
+  color: ${COLORS.DARK};
 `;
 
 export const Button = styled(TouchableOpacity)`

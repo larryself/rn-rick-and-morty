@@ -34,14 +34,13 @@ export const LocationDetail = () => {
       firstInfo={data.location.type}
       title={data.location.name}
       latterInfo={data.location.dimension}
-      subTitle={'Characters'}
-    >
+      subTitle={'Characters'}>
       <FlatList
         showsVerticalScrollIndicator={false}
         data={data.location.residents}
         renderItem={renderItem}
         numColumns={2}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
       />
     </DetailContainer>
   );

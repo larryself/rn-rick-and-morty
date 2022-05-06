@@ -31,14 +31,13 @@ export const EpisodeDetail = () => {
       firstInfo={data.episode.air_date}
       title={data.episode.name}
       latterInfo={data.episode.episode}
-      subTitle={'Characters'}
-    >
+      subTitle={'Characters'}>
       <FlatList
         showsVerticalScrollIndicator={false}
         data={data.episode.characters}
         renderItem={renderItem}
         numColumns={2}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
       />
     </DetailContainer>
   );

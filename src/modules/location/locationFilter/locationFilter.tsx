@@ -9,7 +9,7 @@ import { Container } from './style';
 
 export const LocationFilter = () => {
   const { setType, setDimension } = useActions();
-  const { type, dimension } = useSelector((state) => state.location);
+  const { type, dimension } = useSelector(state => state.location);
   const { data } = useLocationsQuery();
   const locations = data?.locations.results;
 
@@ -23,7 +23,7 @@ export const LocationFilter = () => {
 
   return (
     <Container>
-      <Search title={'Name'} guide={'Give a name'}/>
+      <Search title={'Name'} guide={'Give a name'} />
       <Select
         title={'Type'}
         guide={'Select one'}

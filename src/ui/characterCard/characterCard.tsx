@@ -33,8 +33,7 @@ export const CharacterCard: FC<CharacterCardProps> = ({
             title: name,
           },
         })
-      }
-    >
+      }>
       <Img source={{ uri: image }} />
       <Description>
         <Status>{status}</Status>

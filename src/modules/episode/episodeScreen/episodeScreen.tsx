@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {FlatList, ListRenderItemInfo} from 'react-native';
-import {useEpisodesQuery} from 'src/modules/graphql/episodes';
+import React, { useEffect, useState } from 'react';
+import { FlatList, ListRenderItemInfo } from 'react-native';
+import { useEpisodesQuery } from 'src/modules/graphql/episodes';
 import {
   EpisodeCard,
   EpisodeCardProps,
@@ -8,36 +8,36 @@ import {
   Loader,
   SeasonContainer,
 } from 'src/ui';
-import {Line} from 'src/ui/radio/style';
+import { Line } from 'src/ui/radio/style';
 
 export const EpisodeScreen = () => {
   const [episode, setEpisodes] = useState<
-    {season: string; episodes: EpisodeCardProps[]}[]
+    { season: string; episodes: EpisodeCardProps[] }[]
   >([]);
-  const {data, loading} = useEpisodesQuery();
+  const { data, loading } = useEpisodesQuery();
   const episodes = data?.episodes.results;
 
   const getSeason = (episodes: EpisodeCardProps[]): string[] => {
     return Array.from(
-      new Set(episodes.map(episode => episode.episode.slice(0, 3))),
+      new Set(episodes.map(episode => episode.episode.slice(0, 3)))
     );
   };
 
   const sortEpisodes = (
-    episodes: EpisodeCardProps[],
-  ): {season: string; episodes: EpisodeCardProps[]}[] => {
+    episodes: EpisodeCardProps[]
+  ): { season: string; episodes: EpisodeCardProps[] }[] => {
     const currentSeason = getSeason(episodes);
     const sorted = currentSeason.map(season => {
       const episodesToSeason = episodes.filter(
-        episode => episode.episode.indexOf(season) >= 0,
+        episode => episode.episode.indexOf(season) >= 0
       );
 
-      return {season, episodes: episodesToSeason};
+      return { season, episodes: episodesToSeason };
     });
 
     return sorted;
   };
-  const renderItem = ({item}: ListRenderItemInfo<EpisodeCardProps>) => (
+  const renderItem = ({ item }: ListRenderItemInfo<EpisodeCardProps>) => (
     <EpisodeCard {...item} />
   );
   useEffect(() => {
@@ -57,7 +57,7 @@ export const EpisodeScreen = () => {
         data={episode}
         numColumns={1}
         showsVerticalScrollIndicator={false}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <SeasonContainer title={item.season}>
             <FlatList
               data={item.episodes}

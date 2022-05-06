@@ -21,7 +21,7 @@ export const Container = styled(TouchableOpacity)`
 export const Line = styled(View)`
   width: 100%;
   opacity: 0.2;
-  background: #000000;
+  background: ${COLORS.BLACK};
   height: 0.5px;
 `;
 
@@ -38,14 +38,14 @@ export const Title = styled(Text)`
   font-size: 17px;
   line-height: 22px;
   letter-spacing: -0.41px;
-  color: ${COLORS.BLACK};
+  color: ${COLORS.DARK};
 `;
 
 export const Curcle = styled(View)<{ selected: string | null }>`
   width: 22px;
   height: 22px;
   border: 1.5px solid;
-  border-color: ${(props) => (props.selected ? COLORS.INDIGO : COLORS.GRAY_4)};
+  border-color: ${props => (props.selected ? COLORS.INDIGO : COLORS.GRAY_4)};
   border-radius: 11px;
   align-items: center;
   justify-content: center;
@@ -56,11 +56,10 @@ export const CurcleChecked = styled(View)<{ selected: string | null }>`
   width: 14px;
   height: 14px;
   border-radius: 7px;
-  background-color: ${(props) =>
-  props.selected ? COLORS.INDIGO : COLORS.WHITE};
+  background-color: ${props => (props.selected ? COLORS.INDIGO : COLORS.WHITE)};
 `;
 export const Input = styled(TextInput)`
-  background-color:  rgba(118, 118, 128, 0.12);
+  background-color: rgba(118, 118, 128, 0.12);
   border-radius: 10px;
   padding: 5px 10px;
-`
+`;

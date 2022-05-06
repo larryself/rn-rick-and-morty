@@ -20,8 +20,7 @@ export const TabBar = () => {
       screenOptions={{
         tabBarActiveTintColor: COLORS.INDIGO,
         headerShown: false,
-      }}
-    >
+      }}>
       <Tab.Screen
         name={Routes.CharacterStack}
         component={CharacterStack}

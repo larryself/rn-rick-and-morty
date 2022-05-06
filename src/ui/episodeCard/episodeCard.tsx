@@ -30,8 +30,7 @@ export const EpisodeCard: FC<EpisodeCardProps> = ({
             title: name,
           },
         })
-      }
-    >
+      }>
       <Inner>
         <Wrap>
           <Episode>{episode}</Episode>

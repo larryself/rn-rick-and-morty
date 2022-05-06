@@ -17,7 +17,7 @@ export enum LocationActionTypes {
   SET_TYPE = 'SET_TYPE',
   SET_DIMENSION = 'SET_DIMENSION',
   CLEAR_LOCATION = 'CLEAR_LOCATION',
-  APPLY_LOCATION = 'APPLY_LOCATION'
+  APPLY_LOCATION = 'APPLY_LOCATION',
 }
 
 export interface LocationAction {
@@ -29,7 +29,7 @@ export enum EpisodeActionTypes {
   SET_NAME_EPISODE = 'SET_NAME_EPISODE',
   SET_EPISODE = 'SET_EPISODE',
   CLEAR_EPISODE = 'CLEAR_EPISODE',
-  APPLY_EPISODE = 'APPLY_EPISODE'
+  APPLY_EPISODE = 'APPLY_EPISODE',
 }
 
 export interface EpisodeAction {

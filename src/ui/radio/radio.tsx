@@ -3,8 +3,8 @@ import { FlatList } from 'react-native';
 
 import {
   Container,
-  Curcle,
-  CurcleChecked,
+  Circle,
+  CircleChecked,
   Inner,
   Line,
   TextInner,
@@ -29,11 +29,10 @@ export const Radio: FC<RadioProps> = ({
     <Container
       onPress={() => {
         onChangeSelect(item);
-      }}
-    >
-      <Curcle selected={selected === item}>
-        <CurcleChecked selected={selected === item} />
-      </Curcle>
+      }}>
+      <Circle selected={selected === item}>
+        <CircleChecked selected={selected === item} />
+      </Circle>
       <TextInner>
         <Type>{item}</Type>
       </TextInner>
@@ -48,7 +47,7 @@ export const Radio: FC<RadioProps> = ({
         data={options}
         renderItem={renderItem}
         numColumns={1}
-        keyExtractor={(item) => item}
+        keyExtractor={item => item}
         ItemSeparatorComponent={() => <Line />}
         contentContainerStyle={{ paddingLeft: 18 }}
       />

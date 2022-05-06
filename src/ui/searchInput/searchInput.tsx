@@ -9,18 +9,16 @@ export const SearchInput = () => {
     <>
       <Inner>
         <Container>
-          <Search/>
+          <Search />
           <Input
             placeholder="Search"
             keyboardType={'default'}
             placeholderTextColor={COLORS.text}
           />
-          <Dictation/>
-
+          <Dictation />
         </Container>
-
       </Inner>
-      <Line/>
-  </>
+      <Line />
+    </>
   );
 };

@@ -21,7 +21,7 @@ export const LocationStack = () => {
           name={Routes.LocationScreen}
           component={LocationScreen}
           options={{
-            header: (props) => {
+            header: props => {
               const title = 'Location';
 
               return (
@@ -48,12 +48,19 @@ export const LocationStack = () => {
           }}
         />
       </Stack.Group>
-      <Stack.Group screenOptions={{ presentation: 'modal', gestureEnabled: false }}>
+      <Stack.Group
+        screenOptions={{ presentation: 'modal', gestureEnabled: false }}>
         <Stack.Screen
           name={Routes.LocationFilter}
           component={LocationFilter}
           options={{
-            header: () => <HeaderFilter title={'Filter'} left={<ButtonClear type={'location'}/>} right={<ButtonApply type={'location'}/>}/>
+            header: () => (
+              <HeaderFilter
+                title={'Filter'}
+                left={<ButtonClear type={'location'} />}
+                right={<ButtonApply type={'location'} />}
+              />
+            ),
           }}
         />
       </Stack.Group>

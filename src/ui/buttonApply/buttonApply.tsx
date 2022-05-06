@@ -20,7 +20,7 @@ export const ButtonApply = ({ type }: { type: string }) => {
     if (type === 'episode') {
       applyEpisode();
     }
-    navigation.goBack()
+    navigation.goBack();
   };
   return (
     <Button onPress={handleButton}>

@@ -7,21 +7,19 @@ import { Search, Select } from 'src/ui';
 import { Container } from './style';
 
 export const EpisodeFilter = () => {
-  const { name, episode, } = useSelector(
-    (state) => state.episode,
-  );
+  const { name, episode } = useSelector(state => state.episode);
   const { data } = useEpisodesQuery();
   const { setEpisode } = useActions();
   const episodeSelect = (value: string) => {
-    if(value !== episode){
+    if (value !== episode) {
       setEpisode(value);
     } else {
-      setEpisode('')
+      setEpisode('');
     }
   };
   return (
     <Container>
-      <Search title={'Name'} guide={'Give a name'}/>
+      <Search title={'Name'} guide={'Give a name'} />
       <Select
         title={'Season'}
         guide={'Select one'}

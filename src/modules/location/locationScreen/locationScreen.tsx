@@ -6,7 +6,7 @@ import { LocationCard, LocationCardProps, Loader, Wrapper } from 'src/ui';
 
 export const LocationScreen = () => {
   const { name, type, dimension, apply_filter } = useSelector(
-    (state) => state.location,
+    state => state.location
   );
   const { data, loading } = useLocationsQuery(name, type, dimension);
   const locations = data?.locations.results;
@@ -25,7 +25,7 @@ export const LocationScreen = () => {
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
       />
     </Wrapper>
   );

@@ -21,7 +21,7 @@ export const ButtonClear = ({ type }: { type: string }) => {
     if (type === 'episode') {
       clearEpisode();
     }
-    navigation.goBack()
+    navigation.goBack();
   };
 
   return (

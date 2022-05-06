@@ -31,8 +31,7 @@ export const CharacterDetail = () => {
       firstInfo={data?.character.status}
       title={data?.character.name}
       latterInfo={data?.character.species}
-      subTitle={'Informations'}
-    >
+      subTitle={'Informations'}>
       <Line />
       <Container>
         <SubTitle>Gender</SubTitle>
@@ -59,8 +58,7 @@ export const CharacterDetail = () => {
                 title: data?.character.location.name,
               },
             });
-          }}
-        >
+          }}>
           <View>
             <SubTitle>Location</SubTitle>
             <Info>{data?.character.location.name}</Info>
@@ -76,7 +74,7 @@ export const CharacterDetail = () => {
         renderItem={renderEpisode}
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
         contentContainerStyle={{ paddingLeft: 16 }}
         ItemSeparatorComponent={() => <Line />}
       />

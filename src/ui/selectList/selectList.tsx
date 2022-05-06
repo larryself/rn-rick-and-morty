@@ -21,18 +21,18 @@ export const SelectList: FC<SelectListProps> = ({
   );
 
   return (
-      <Inner>
-        <Title>{title}</Title>
-        <Line />
-        <FlatList
-          data={options}
-          renderItem={renderItem}
-          numColumns={1}
-          keyExtractor={(item) => item}
-          ItemSeparatorComponent={() => <Line />}
-          contentContainerStyle={{ paddingLeft: 18 }}
-        />
-        <Line />
-      </Inner>
+    <Inner>
+      <Title>{title}</Title>
+      <Line />
+      <FlatList
+        data={options}
+        renderItem={renderItem}
+        numColumns={1}
+        keyExtractor={item => item}
+        ItemSeparatorComponent={() => <Line />}
+        contentContainerStyle={{ paddingLeft: 18 }}
+      />
+      <Line />
+    </Inner>
   );
 };

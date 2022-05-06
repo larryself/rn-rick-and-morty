@@ -27,8 +27,7 @@ export const LocationCard: FC<LocationCardProps> = ({ type, name, id }) => {
             title: name,
           },
         })
-      }
-    >
+      }>
       <Type>{type}</Type>
       <Name>{name}</Name>
     </Container>

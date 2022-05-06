@@ -5,11 +5,10 @@ import { useSelector } from 'src/store/hooks/useSelector';
 import { CharacterCard, CharacterCardProps, Loader, Wrapper } from 'src/ui';
 
 export const CharacterScreen = () => {
-
   const { species, status, gender, name, apply_filter } = useSelector(
-    (state) => state.character,
+    state => state.character
   );
-  const { data, loading } = useCharactersQuery(name,status,gender,species);
+  const { data, loading } = useCharactersQuery(name, status, gender, species);
   const characters = data?.characters.results;
   const renderItem = ({ item }: ListRenderItemInfo<CharacterCardProps>) => (
     <CharacterCard {...item} />
@@ -26,7 +25,7 @@ export const CharacterScreen = () => {
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
       />
     </Wrapper>
   );

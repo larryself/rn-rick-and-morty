@@ -3,21 +3,21 @@ enum Location {
   'SET_TYPE' = 'SET_TYPE',
   'SET_DIMENSION' = 'SET_DIMENSION',
   'CLEAR_LOCATION' = 'CLEAR_LOCATION',
-  'APPLY_LOCATION' ='APPLY_LOCATION'
+  'APPLY_LOCATION' = 'APPLY_LOCATION',
 }
 
 interface LocationState {
   name: string;
   dimension: string;
-  type: string ;
-  apply_filter: boolean
+  type: string;
+  apply_filter: boolean;
 }
 
 const initialState: LocationState = {
   name: '',
   type: '',
   dimension: '',
-  apply_filter: false
+  apply_filter: false,
 };
 
 interface LocationAction {
@@ -27,7 +27,7 @@ interface LocationAction {
 
 export const locationReducer = (
   state = initialState,
-  action: LocationAction,
+  action: LocationAction
 ): LocationState => {
   switch (action.type) {
     case Location.SET_NAME_LOCATION:
