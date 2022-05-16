@@ -8,13 +8,6 @@ export const Container = styled(View)`
   padding-left: 11px;
 `;
 
-export const Line = styled(View)`
-  width: 100%;
-  opacity: 0.2;
-  background: #000000;
-  height: 0.5px;
-`;
-
 export const Title = styled(Text)`
   font-weight: 700;
   font-size: 20px;
@@ -45,4 +38,11 @@ export const Location = styled(TouchableOpacity)`
   justify-content: space-between;
   align-items: center;
   padding-right: 16px;
+`;
+
+export const Wrap = styled(View)`
+  padding-left: 16px;
+  flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;

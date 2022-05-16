@@ -1,44 +1,35 @@
 import React, { useEffect } from 'react';
-import { FlatList, ListRenderItemInfo } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { useEpisodeByIDQuery } from 'src/modules/graphql/episodes';
+import { useGetEpisodeQuery } from 'src/graphql/generated/graphql';
+import { Routes } from 'src/navigation/routes';
 import { EpisodeTabScreenProps } from 'src/navigation/types';
-import {
-  CharacterCard,
-  CharacterCardProps,
-  DetailContainer,
-  Loader,
-} from 'src/ui';
+import { CharacterCard, DetailContainer, Loader } from 'src/ui';
+import { Container } from './style';
 
 export const EpisodeDetail = () => {
   const { setOptions } = useNavigation();
-  const { params } =
-    useRoute<EpisodeTabScreenProps<'EpisodeDetail'>['route']>();
-  const { data, loading } = useEpisodeByIDQuery(params.id);
+  const {
+    params: { id, title },
+  } = useRoute<EpisodeTabScreenProps<Routes.EpisodeDetail>['route']>();
+  const { data, loading } = useGetEpisodeQuery({ variables: { id } });
   useEffect(() => {
-    setOptions({ title: params.title });
-  }, [params]);
-  const renderItem = ({ item }: ListRenderItemInfo<CharacterCardProps>) => (
-    <CharacterCard {...item} />
-  );
+    setOptions({ title: title });
+  }, [title]);
 
   if (loading) {
     return <Loader />;
   }
-
   return (
     <DetailContainer
-      firstInfo={data.episode.air_date}
-      title={data.episode.name}
-      latterInfo={data.episode.episode}
+      firstInfo={data?.episode.air_date}
+      title={data?.episode.name}
+      latterInfo={data?.episode.episode}
       subTitle={'Characters'}>
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={data.episode.characters}
-        renderItem={renderItem}
-        numColumns={2}
-        keyExtractor={item => item.id}
-      />
+      <Container>
+        {data?.episode.characters.map(character => (
+          <CharacterCard key={character.id} character={character} />
+        ))}
+      </Container>
     </DetailContainer>
   );
 };

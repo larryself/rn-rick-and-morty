@@ -1,23 +1,22 @@
-import React from 'react';
-import { useCharactersQuery } from 'src/modules/graphql/characters';
+import React, { useState } from 'react';
+import { useGetCharactersNameQuery } from 'src/graphql/generated/graphql';
 import { unique } from 'src/utils/unique';
 import { useActions } from 'src/store/hooks/useAction';
 import { useSelector } from 'src/store/hooks/useSelector';
-import { Radio, Search, Select } from 'src/ui';
-
+import { Loader, Radio, Search, Select } from 'src/ui';
 import { Container, Inner } from './style';
 
 export const CharacterFilter = () => {
   const { species, status, gender, name } = useSelector(
     state => state.character
   );
-  const { setStatus, setGender, setSpecies } = useActions();
-  const { data } = useCharactersQuery();
+  const { setStatus, setGender, setSpecies, setNameCharacter } = useActions();
+  const [value, setValue] = useState('');
+  const { data, loading } = useGetCharactersNameQuery({
+    variables: { name: value },
+  });
+
   const characters = data?.characters.results;
-  console.log(
-    'name',
-    characters.map(character => character.name)
-  );
   const handleStatus = (value: string) => {
     if (value !== status) {
       setStatus(value);
@@ -42,6 +41,9 @@ export const CharacterFilter = () => {
     }
   };
 
+  if (loading) {
+    return <Loader />;
+  }
   return (
     <Container>
       <Inner>
@@ -49,7 +51,10 @@ export const CharacterFilter = () => {
           title={'Name'}
           guide={'Give a name'}
           selected={name}
-          list={characters.map(character => character.name)}
+          select={setNameCharacter}
+          list={characters}
+          value={value}
+          setValue={setValue}
         />
         <Select
           title={'Species'}

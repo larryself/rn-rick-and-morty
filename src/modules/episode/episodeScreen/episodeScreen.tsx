@@ -1,75 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import { FlatList, ListRenderItemInfo } from 'react-native';
-import { useEpisodesQuery } from 'src/modules/graphql/episodes';
-import {
-  EpisodeCard,
-  EpisodeCardProps,
-  Wrapper,
-  Loader,
-  SeasonContainer,
-} from 'src/ui';
-import { Line } from 'src/ui/radio/style';
+import React from 'react';
+import { FlatList } from 'react-native';
+import { useGetEpisodesQuery } from 'src/graphql/generated/graphql';
+import { useSelector } from 'src/store/hooks/useSelector';
+import { EpisodeCard, Wrapper, Loader, Line } from 'src/ui';
 
 export const EpisodeScreen = () => {
-  const [episode, setEpisodes] = useState<
-    { season: string; episodes: EpisodeCardProps[] }[]
-  >([]);
-  const { data, loading } = useEpisodesQuery();
-  const episodes = data?.episodes.results;
-
-  const getSeason = (episodes: EpisodeCardProps[]): string[] => {
-    return Array.from(
-      new Set(episodes.map(episode => episode.episode.slice(0, 3)))
-    );
-  };
-
-  const sortEpisodes = (
-    episodes: EpisodeCardProps[]
-  ): { season: string; episodes: EpisodeCardProps[] }[] => {
-    const currentSeason = getSeason(episodes);
-    const sorted = currentSeason.map(season => {
-      const episodesToSeason = episodes.filter(
-        episode => episode.episode.indexOf(season) >= 0
-      );
-
-      return { season, episodes: episodesToSeason };
-    });
-
-    return sorted;
-  };
-  const renderItem = ({ item }: ListRenderItemInfo<EpisodeCardProps>) => (
-    <EpisodeCard {...item} />
-  );
-  useEffect(() => {
-    if (!loading) {
-      const sortedEpisodes = sortEpisodes(episodes);
-      setEpisodes(sortedEpisodes);
-    }
-  }, [loading]);
+  const { name, season } = useSelector(state => state.episode);
+  const { data, loading, fetchMore } = useGetEpisodesQuery();
+  const episodes = data?.episodes?.results;
+  const limit = data?.episodes?.info?.next;
 
   if (loading) {
     return <Loader />;
   }
-
+  const loadEpisodes = async () => {
+    await fetchMore({
+      variables: { page: limit },
+    });
+  };
   return (
     <Wrapper>
       <FlatList
-        data={episode}
-        numColumns={1}
+        data={episodes}
+        renderItem={({ item }) => <EpisodeCard {...item} />}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <SeasonContainer title={item.season}>
-            <FlatList
-              data={item.episodes}
-              renderItem={renderItem}
-              showsVerticalScrollIndicator={false}
-              numColumns={1}
-              ItemSeparatorComponent={() => <Line />}
-              keyExtractor={item => item.id}
-            />
-          </SeasonContainer>
-        )}
-        keyExtractor={item => item.season}
+        numColumns={1}
+        ItemSeparatorComponent={() => <Line />}
+        keyExtractor={item => item.id}
+        onEndReached={limit ? loadEpisodes : null}
+        onEndReachedThreshold={2}
+        contentContainerStyle={{ paddingLeft: 16 }}
       />
     </Wrapper>
   );

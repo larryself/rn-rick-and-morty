@@ -1,29 +1,22 @@
 import React, { useEffect } from 'react';
-import { FlatList, ListRenderItemInfo } from 'react-native';
 import { useRoute } from '@react-navigation/native';
-
-import { useLocationByIDQuery } from 'src/modules/graphql/locations';
-import { useNavigation } from 'src/navigation/routes';
+import { useGetLocationQuery } from 'src/graphql/generated/graphql';
+import { Routes, useNavigation } from 'src/navigation/routes';
 import { LocationTabScreenProps } from 'src/navigation/types';
-import {
-  CharacterCard,
-  CharacterCardProps,
-  Loader,
-  DetailContainer,
-} from 'src/ui';
+import { CharacterCard, Loader, DetailContainer } from 'src/ui';
+import { Wrap } from './style';
 
 export const LocationDetail = () => {
   const { setOptions } = useNavigation();
-  const { params } =
-    useRoute<LocationTabScreenProps<'LocationDetail'>['route']>();
-  const { data, loading } = useLocationByIDQuery(params.id);
+  const {
+    params: { title, id },
+  } = useRoute<LocationTabScreenProps<Routes.LocationDetail>['route']>();
+  const { data, loading } = useGetLocationQuery({
+    variables: { id },
+  });
   useEffect(() => {
-    setOptions({ title: params?.title });
-  }, [params]);
-
-  const renderItem = ({ item }: ListRenderItemInfo<CharacterCardProps>) => (
-    <CharacterCard {...item} />
-  );
+    setOptions({ title });
+  }, [title]);
 
   if (loading) {
     return <Loader />;
@@ -31,17 +24,15 @@ export const LocationDetail = () => {
 
   return (
     <DetailContainer
-      firstInfo={data.location.type}
-      title={data.location.name}
-      latterInfo={data.location.dimension}
+      firstInfo={data?.location.type}
+      title={data?.location.name}
+      latterInfo={data?.location.dimension}
       subTitle={'Characters'}>
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={data.location.residents}
-        renderItem={renderItem}
-        numColumns={2}
-        keyExtractor={item => item.id}
-      />
+      <Wrap>
+        {data?.location.residents.map(resident => (
+          <CharacterCard key={resident.id} character={resident} />
+        ))}
+      </Wrap>
     </DetailContainer>
   );
 };
