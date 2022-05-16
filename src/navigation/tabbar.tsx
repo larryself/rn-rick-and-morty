@@ -1,11 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Character } from 'assets/images/icons/character';
-import { Episode } from 'assets/images/icons/episode';
-import { Location } from 'assets/images/icons/location';
-
+import { Character, Episode, Location } from 'assets/images/icons/';
 import { COLORS } from 'src/theme/colors';
-
 import { CharacterStack } from './characterStack';
 import { EpisodeStack } from './episodeStack';
 import { LocationStack } from './locationStack';
