@@ -12,8 +12,8 @@ export const Container = styled(View)`
   background-color: ${COLORS.GRAY_6};
   justify-content: center;
   align-items: center;
-  padding-top: 14;
-  padding-bottom: 20;
+  padding-top: 14px;
+  padding-bottom: 20px;
 `;
 
 export const BgImg = styled(Image)`
@@ -28,7 +28,8 @@ export const Img = styled(Image)`
   width: 130px;
   height: 130px;
   border-radius: 65px;
-  border: 5px solid ${COLORS.GRAY_6};
+  border-width: 5px;
+  border-color: ${COLORS.GRAY_6};
   margin-bottom: 20px;
 `;
 
@@ -37,6 +38,7 @@ export const Title = styled(Text)`
   font-size: 28px;
   line-height: 34px;
   letter-spacing: 0.337647px;
+  text-align: center;
 `;
 
 export const FirstInfo = styled(Text)`
@@ -63,4 +65,10 @@ export const SubTitle = styled(Text)`
   letter-spacing: 0.38px;
   color: ${COLORS.GRAY_1};
   padding: 20px 16px 10px;
+`;
+
+export const Wrap = styled(View)`
+  flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;

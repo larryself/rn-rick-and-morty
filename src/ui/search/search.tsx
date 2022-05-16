@@ -1,42 +1,43 @@
 import { Arrow } from 'assets/images/icons/arrow';
-import React, { useState } from 'react';
-import { FlatList, Text, View } from 'react-native';
-import { useCharactersQuery } from 'src/modules/graphql/characters';
+import React, { FC, useState } from 'react';
+import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { ButtonBack } from 'src/ui/buttonBack/buttonBack';
 import { HeaderFilter } from 'src/ui/headerFilter/headerFilter';
 import { ModalMenu } from 'src/ui/modal/modal';
 import { SearchInput } from 'src/ui/searchInput/searchInput';
-import {
-  Container,
-  Curcle,
-  CurcleChecked,
-  Guide,
-  Inner,
-  Line,
-  Title,
-  Input,
-} from './style';
+import { Line } from 'src/ui';
+import { Container, Curcle, CurcleChecked, Guide, Inner, Title } from './style';
 
-export const Search = ({
+interface SearchProps {
+  title: string;
+  guide: string;
+  selected: string;
+  select: (item: string) => void;
+  list?: [];
+  value: string;
+  setValue: (item: string) => void;
+}
+export const Search: FC<SearchProps> = ({
   title = '',
   guide = '',
   selected = '',
-  list = [],
+  select,
+  list,
+  setValue,
+  value,
 }) => {
   const [visible, setVisible] = useState(false);
-  const { data } = useCharactersQuery();
-  const typeSelect = (item: string) => {
-    setVisible(state => !state);
-  };
-  console.log(list);
-  const renderItem = ({ item }: { item: string }) => {
-    console.log(item);
-    return (
-      <View>
-        <Text>{item}</Text>
-      </View>
-    );
-  };
+  const renderItem = ({ item }: { item: any }) => (
+    <TouchableOpacity
+      style={{ padding: 10 }}
+      onPress={() => {
+        setVisible(false);
+        select(item.name);
+      }}>
+      <Text style={{}}>{item.name}</Text>
+    </TouchableOpacity>
+  );
+
   return (
     <>
       <Line />
@@ -54,14 +55,15 @@ export const Search = ({
       </Container>
       <Line />
       <ModalMenu setShowModal={setVisible} showModal={visible}>
-        <View style={{ marginVertical: 40 }}>
+        <View>
           <HeaderFilter title={'Name'} left={<ButtonBack />} />
-          <SearchInput />
+          <SearchInput value={value} setValue={setValue} />
           <FlatList
             data={list}
             numColumns={1}
             renderItem={renderItem}
-            keyExtractor={item => item}
+            keyExtractor={item => item.id}
+            style={{ height: 200 }}
           />
         </View>
       </ModalMenu>

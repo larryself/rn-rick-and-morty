@@ -18,13 +18,6 @@ export const Container = styled(TouchableOpacity)`
   padding: 8px 16px 10px 19px;
 `;
 
-export const Line = styled(View)`
-  width: 100%;
-  opacity: 0.2;
-  background: ${COLORS.BLACK};
-  height: 0.5px;
-`;
-
 export const Guide = styled(Text)`
   font-weight: 400;
   font-size: 15px;

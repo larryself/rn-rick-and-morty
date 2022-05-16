@@ -11,20 +11,20 @@ import {
   Title,
 } from './style';
 
-export interface DetailContainerProps {
+export type DetailContainerProps = {
   img?: string;
-  firstInfo: string;
-  latterInfo: string;
-  title: string;
+  firstInfo?: string;
+  latterInfo?: string;
+  title?: string;
   subTitle?: string;
   children?: ReactNode;
-}
+};
 
 export const DetailContainer: FC<DetailContainerProps> = ({
   img,
-  firstInfo,
-  latterInfo,
-  title,
+  firstInfo = '',
+  latterInfo = '',
+  title = '',
   children,
   subTitle,
 }) => {

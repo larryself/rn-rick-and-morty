@@ -1,25 +1,16 @@
 import React, { FC } from 'react';
 import { Dimensions } from 'react-native';
-
+import { CharactersFragment } from 'src/graphql/generated/graphql';
 import { Routes, useNavigation } from 'src/navigation/routes';
-
 import { Container, Description, Img, Name, Status } from './style';
-
-export interface CharacterCardProps {
-  image: string;
-  status: string;
-  name: string;
-  id: string;
-}
 
 const { width } = Dimensions.get('screen');
 
-export const CharacterCard: FC<CharacterCardProps> = ({
-  image,
-  status,
-  name,
-  id,
-}) => {
+type CharacterProps = {
+  character: CharactersFragment;
+};
+export const CharacterCard: FC<CharacterProps> = ({ character }) => {
+  const { id, name, image, status } = character;
   const { navigate } = useNavigation();
 
   return (
@@ -37,7 +28,7 @@ export const CharacterCard: FC<CharacterCardProps> = ({
       <Img source={{ uri: image }} />
       <Description>
         <Status>{status}</Status>
-        <Name>{name}</Name>
+        <Name numberOfLines={2}>{name}</Name>
       </Description>
     </Container>
   );

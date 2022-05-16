@@ -3,15 +3,8 @@ import { View } from 'react-native';
 import { Arrow } from 'assets/images/icons/arrow';
 import { ModalMenu } from 'src/ui/modal/modal';
 import { SelectList } from '../selectList/selectList';
-import {
-  Container,
-  Circle,
-  CircleChecked,
-  Guide,
-  Inner,
-  Line,
-  Title,
-} from './style';
+import { Line } from 'src/ui';
+import { Container, Circle, CircleChecked, Guide, Inner, Title } from './style';
 
 export interface SelectProps {
   selected: string | null;
@@ -29,7 +22,6 @@ export const Select: FC<SelectProps> = ({
   types,
 }) => {
   const [visible, setVisible] = useState(false);
-
   const typeSelect = (item: string) => {
     onSelect(item);
     setVisible(state => !state);

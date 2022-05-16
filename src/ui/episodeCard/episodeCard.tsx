@@ -1,18 +1,10 @@
 import React, { FC } from 'react';
 import { Arrow } from 'assets/images/icons/arrow';
-
+import { EpisodesFragment } from 'src/graphql/generated/graphql';
 import { Routes, useNavigation } from 'src/navigation/routes';
-
 import { Container, Date, Episode, Inner, Name, Wrap } from './style';
 
-export interface EpisodeCardProps {
-  episode: string;
-  name: string;
-  air_date: string;
-  id: string;
-}
-
-export const EpisodeCard: FC<EpisodeCardProps> = ({
+export const EpisodeCard: FC<EpisodesFragment> = ({
   episode,
   air_date,
   name,

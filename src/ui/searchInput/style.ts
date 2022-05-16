@@ -13,12 +13,6 @@ export const Inner = styled(View)`
   padding: 6px 10px;
 `;
 
-export const Line = styled(View)`
-  width: 100%;
-  opacity: 0.2;
-  background: ${COLORS.BLACK};
-  height: 0.5px;
-`;
 export const Input = styled(TextInput)`
   font-weight: 400;
   font-size: 17px;

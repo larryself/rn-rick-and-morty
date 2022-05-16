@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
-
-import { Container, Inner, Line, Season, Wrap } from './style';
+import { Line } from 'src/ui';
+import { Container, Inner, Season, Wrap } from './style';
 
 export interface SeasonContainerProps {
   title: string;

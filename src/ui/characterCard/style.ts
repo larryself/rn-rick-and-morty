@@ -33,4 +33,5 @@ export const Name = styled(Text)`
   font-weight: 900;
   font-size: 17px;
   line-height: 22px;
+  color: ${COLORS.DARK};
 `;

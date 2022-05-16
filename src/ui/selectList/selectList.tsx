@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { FlatList } from 'react-native';
-
-import { Inner, Line, SelectItem, SelectText as Text, Title } from './style';
+import { Line } from 'src/ui';
+import { Inner, SelectItem, SelectText as Text, Title } from './style';
 
 export interface SelectListProps {
   title: string;

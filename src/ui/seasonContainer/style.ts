@@ -24,10 +24,3 @@ export const Season = styled(Text)`
 export const Inner = styled(View)`
   padding-left: 16px;
 `;
-
-export const Line = styled(View)`
-  width: 100%;
-  opacity: 0.2;
-  background: ${COLORS.BLACK};
-  height: 0.5px;
-`;

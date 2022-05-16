@@ -25,4 +25,5 @@ export const Name = styled(Text)`
   font-size: 17px;
   line-height: 22px;
   letter-spacing: -0.41px;
+  color: ${COLORS.DARK};
 `;

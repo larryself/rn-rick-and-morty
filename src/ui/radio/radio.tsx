@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
 import { FlatList } from 'react-native';
-
+import { Line } from 'src/ui';
 import {
   Container,
   Circle,
   CircleChecked,
   Inner,
-  Line,
   TextInner,
   Title,
   Type,

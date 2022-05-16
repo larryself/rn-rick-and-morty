@@ -18,13 +18,6 @@ export const Container = styled(TouchableOpacity)`
   padding: 8px 16px 10px 19px;
 `;
 
-export const Line = styled(View)`
-  width: 100%;
-  opacity: 0.2;
-  background: ${COLORS.BLACK};
-  height: 0.5px;
-`;
-
 export const Guide = styled(Text)`
   font-weight: 400;
   font-size: 15px;
@@ -44,7 +37,7 @@ export const Title = styled(Text)`
 export const Curcle = styled(View)<{ selected: string | null }>`
   width: 22px;
   height: 22px;
-  border: 1.5px solid;
+  border-width: 1.5px;
   border-color: ${props => (props.selected ? COLORS.INDIGO : COLORS.GRAY_4)};
   border-radius: 11px;
   align-items: center;
@@ -58,8 +51,9 @@ export const CurcleChecked = styled(View)<{ selected: string | null }>`
   border-radius: 7px;
   background-color: ${props => (props.selected ? COLORS.INDIGO : COLORS.WHITE)};
 `;
+
 export const Input = styled(TextInput)`
-  background-color: rgba(118, 118, 128, 0.12);
+  background-color: ${COLORS.GRAY_5};
   border-radius: 10px;
   padding: 5px 10px;
 `;

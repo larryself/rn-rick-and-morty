@@ -7,19 +7,12 @@ export const Inner = styled(View)`
   flex-direction: column;
 `;
 
-export const Line = styled(View)`
-  width: 100%;
-  opacity: 0.2;
-  background: ${COLORS.BLACK};
-  height: 0.5px;
-`;
-
 export const Title = styled(Text)`
   font-weight: 700;
   font-size: 20px;
   line-height: 25px;
   letter-spacing: -0.24px;
-  color: rgba(0, 0, 0, 0.4);
+  color: ${COLORS.GRAY_4};
   padding: 8px 16px;
 `;
 

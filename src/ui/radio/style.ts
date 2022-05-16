@@ -12,13 +12,6 @@ export const Container = styled(TouchableOpacity)`
   align-items: center;
 `;
 
-export const Line = styled(View)`
-  width: 100%;
-  opacity: 0.2;
-  background: ${COLORS.BLACK};
-  height: 0.5px;
-`;
-
 export const Wrap = styled(View)`
   padding-left: 18px;
 `;
@@ -28,14 +21,14 @@ export const Title = styled(Text)`
   font-size: 15px;
   line-height: 18px;
   letter-spacing: -0.24px;
-  color: rgba(0, 0, 0, 0.4);
+  color: ${COLORS.GRAY_4};
   padding: 8px 16px;
 `;
 
 export const Circle = styled(View)<{ selected: boolean }>`
   width: 22px;
   height: 22px;
-  border: 1.5px solid;
+  border-width: 1.5px;
   border-color: ${props => (props.selected ? COLORS.INDIGO : COLORS.GRAY_4)};
   border-radius: 11px;
   align-items: center;
@@ -56,4 +49,9 @@ export const TextInner = styled(View)`
 
 export const Type = styled(Text)`
   padding: 11px 0;
+  color: ${COLORS.DARK};
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.41px;
 `;

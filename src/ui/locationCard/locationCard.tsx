@@ -1,19 +1,12 @@
 import React, { FC } from 'react';
 import { Dimensions } from 'react-native';
-
+import { LocationsFragment } from 'src/graphql/generated/graphql';
 import { Routes, useNavigation } from 'src/navigation/routes';
-
 import { Container, Name, Type } from './style';
-
-export interface LocationCardProps {
-  type: string;
-  name: string;
-  id: string;
-}
 
 const { width } = Dimensions.get('screen');
 
-export const LocationCard: FC<LocationCardProps> = ({ type, name, id }) => {
+export const LocationCard: FC<LocationsFragment> = ({ type, name, id }) => {
   const { navigate } = useNavigation();
 
   return (
@@ -28,8 +21,8 @@ export const LocationCard: FC<LocationCardProps> = ({ type, name, id }) => {
           },
         })
       }>
-      <Type>{type}</Type>
-      <Name>{name}</Name>
+      <Type numberOfLines={1}>{type}</Type>
+      <Name numberOfLines={2}>{name}</Name>
     </Container>
   );
 };
