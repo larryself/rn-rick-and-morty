@@ -3,18 +3,18 @@ import { Dispatch } from 'react';
 import { EpisodeAction, EpisodeActionTypes } from '../types';
 
 export const setNameEpisode =
-  (type: string, name: string) => (dispatch: Dispatch<EpisodeAction>) => {
+  (name: string) => (dispatch: Dispatch<EpisodeAction>) => {
     dispatch({
       type: EpisodeActionTypes.SET_NAME_EPISODE,
       payload: name,
     });
   };
 
-export const setEpisode =
-  (episode: string) => (dispatch: Dispatch<EpisodeAction>) => {
+export const setSeason =
+  (season: string) => (dispatch: Dispatch<EpisodeAction>) => {
     dispatch({
-      type: EpisodeActionTypes.SET_EPISODE,
-      payload: episode,
+      type: EpisodeActionTypes.SET_SEASON,
+      payload: season,
     });
   };
 

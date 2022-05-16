@@ -1,11 +1,6 @@
 import { Dispatch } from 'react';
 
-import {
-  CharacterAction,
-  CharacterActionTypes,
-  EpisodeAction,
-  EpisodeActionTypes,
-} from '../types';
+import { CharacterAction, CharacterActionTypes } from '../types';
 
 export const setNameCharacter =
   (name: string) => (dispatch: Dispatch<CharacterAction>) => {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import {
   CharacterDetail,
   CharacterFilter,
@@ -38,12 +37,14 @@ export const CharacterStack = () => {
           name={Routes.CharacterDetail}
           component={CharacterDetail}
           options={{
-            headerTitleAlign: 'center',
-            headerTitleStyle: {
-              fontWeight: '900',
-              fontSize: 15,
+            header: ({ options }) => {
+              return (
+                <HeaderFilter
+                  title={options.title ?? ''}
+                  left={<ButtonBack />}
+                />
+              );
             },
-            headerLeft: () => <ButtonBack />,
           }}
         />
       </Stack.Group>

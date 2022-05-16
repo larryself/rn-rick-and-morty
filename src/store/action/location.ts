@@ -1,14 +1,9 @@
 import { Dispatch } from 'react';
 
-import {
-  CharacterAction,
-  CharacterActionTypes,
-  LocationAction,
-  LocationActionTypes,
-} from '../types';
+import { LocationAction, LocationActionTypes } from '../types';
 
 export const setNameLocation =
-  (type: string, name: string) => (dispatch: Dispatch<LocationAction>) => {
+  (name: string) => (dispatch: Dispatch<LocationAction>) => {
     dispatch({
       type: LocationActionTypes.SET_NAME_LOCATION,
       payload: name,

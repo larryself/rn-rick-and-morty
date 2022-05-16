@@ -1,35 +1,39 @@
-import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import type {
-  CompositeScreenProps,
-  NavigatorScreenParams,
-} from '@react-navigation/native';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import type { StackScreenProps } from '@react-navigation/stack';
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { CompositeScreenProps, useRoute } from '@react-navigation/native';
+import { Routes } from 'src/navigation/routes';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+
+type Params = {
+  id: string;
+  title: string;
+};
 
 export type RootStackParamList = {
-  Character: CharacterTabParamList;
-  Location: LocationTabParamList;
-  Episode: EpisodeTabParamList;
+  [Routes.CharacterScreen]: CharacterTabParamList;
+  [Routes.LocationScreen]: LocationTabParamList;
+  [Routes.EpisodeScreen]: EpisodeTabParamList;
 };
+
 export type LocationTabParamList = {
-  LocationScreen: undefined;
-  LocationDetail: { id: string; title: string };
-  LocationFilter: undefined;
+  [Routes.LocationScreen]: undefined;
+  [Routes.LocationDetail]: Params;
+  [Routes.LocationFilter]: undefined;
 };
 
 export type EpisodeTabParamList = {
-  EpisodeScreen: undefined;
-  EpisodeDetail: { id: string; title: string };
-  EpisodeFilter: undefined;
+  [Routes.EpisodeScreen]: undefined;
+  [Routes.EpisodeDetail]: Params;
+  [Routes.EpisodeFilter]: undefined;
 };
+
 export type CharacterTabParamList = {
-  CharacterScreen: undefined;
-  CharacterDetail: { id: string; title: string };
-  CharacterFilter: undefined;
+  [Routes.CharacterScreen]: undefined;
+  [Routes.CharacterDetail]: Params;
+  [Routes.CharacterFilter]: undefined;
 };
 
 export type RootStackScreenProps<RouteName extends keyof RootStackParamList> =
-  StackScreenProps<RootStackParamList, RouteName>;
+  NativeStackScreenProps<RootStackParamList, RouteName>;
 
 export type CharacterTabScreenProps<
   RouteName extends keyof CharacterTabParamList

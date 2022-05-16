@@ -27,7 +27,7 @@ export interface LocationAction {
 
 export enum EpisodeActionTypes {
   SET_NAME_EPISODE = 'SET_NAME_EPISODE',
-  SET_EPISODE = 'SET_EPISODE',
+  SET_SEASON = 'SET_SEASON',
   CLEAR_EPISODE = 'CLEAR_EPISODE',
   APPLY_EPISODE = 'APPLY_EPISODE',
 }
