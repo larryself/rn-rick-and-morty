@@ -6,7 +6,13 @@ export const CharactersField = gql`
     name
     status
     image
-    species
+  }
+`;
+
+export const InfoField = gql`
+  fragment info on Info {
+    pages
+    next
   }
 `;
 
@@ -14,6 +20,7 @@ export const CharacterField = gql`
   ${CharactersField}
   fragment character on Character {
     ...characters
+    species
     type
     gender
   }
