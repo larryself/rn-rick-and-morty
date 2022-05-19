@@ -5,7 +5,7 @@ import { useSelector } from 'src/store/hooks/useSelector';
 import { CharacterCard, Loader, Wrapper } from 'src/ui';
 
 export const CharacterScreen = () => {
-  const { species, status, gender, name, apply_filter } = useSelector(
+  const { species, status, gender, name } = useSelector(
     state => state.character
   );
   const { data, loading, fetchMore } = useGetCharactersQuery({

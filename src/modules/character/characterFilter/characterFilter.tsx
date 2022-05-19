@@ -1,79 +1,107 @@
 import React, { useState } from 'react';
-import { useGetCharactersNameQuery } from 'src/graphql/generated/graphql';
-import { unique } from 'src/utils/unique';
+import {
+  useGetCharactersNameQuery,
+  useGetCharactersQuery,
+  useGetCharactersSpeciesQuery,
+} from 'src/graphql/generated/graphql';
 import { useActions } from 'src/store/hooks/useAction';
 import { useSelector } from 'src/store/hooks/useSelector';
-import { Loader, Radio, Search, Select } from 'src/ui';
+import { useNavigation } from 'src/navigation/routes';
+import { HeaderFilter, ButtonApply, ButtonClear, Radio, Search } from 'src/ui';
+import { getValues } from 'src/utils/getValues';
 import { Container, Inner } from './style';
 
 export const CharacterFilter = () => {
   const { species, status, gender, name } = useSelector(
     state => state.character
   );
-  const { setStatus, setGender, setSpecies, setNameCharacter } = useActions();
-  const [value, setValue] = useState('');
-  const { data, loading } = useGetCharactersNameQuery({
-    variables: { name: value },
+  const { applyCharacter, clearCharacter } = useActions();
+  const [valueName, setValueName] = useState(name);
+  const [valueSpecies, setValueSpecies] = useState(name);
+  const [filter, setFilter] = useState({ name, status, gender, species });
+  const nameQuery = useGetCharactersNameQuery({
+    variables: { name: valueName },
   });
-
-  const characters = data?.characters.results;
-  const handleStatus = (value: string) => {
-    if (value !== status) {
-      setStatus(value);
+  const speciesQuery = useGetCharactersSpeciesQuery({
+    variables: { species: valueSpecies },
+  });
+  const { goBack } = useNavigation();
+  const handleApply = () => {
+    applyCharacter(filter);
+    goBack();
+  };
+  const handleClear = () => {
+    clearCharacter();
+    goBack();
+  };
+  const handleSearch = (value: string) => {
+    if (value === filter.name) {
+      setFilter({ ...filter, name: '' });
     } else {
-      setStatus('');
+      setFilter({ ...filter, name: value });
+    }
+  };
+
+  const handleStatus = (value: string) => {
+    if (value === filter.status) {
+      setFilter({ ...filter, status: '' });
+    } else {
+      setFilter({ ...filter, status: value });
     }
   };
 
   const handleGender = (value: string) => {
-    if (value !== gender) {
-      setGender(value);
+    if (value === filter.gender) {
+      setFilter({ ...filter, gender: '' });
     } else {
-      setGender('');
+      setFilter({ ...filter, gender: value });
+    }
+  };
+  const handleSpecies = (value: string) => {
+    if (value === filter.species) {
+      setFilter({ ...filter, species: '' });
+    } else {
+      setFilter({ ...filter, species: value });
     }
   };
 
-  const speciesSelect = (value: string) => {
-    if (value !== species) {
-      setSpecies(value);
-    } else {
-      setSpecies('');
-    }
-  };
-
-  if (loading) {
-    return <Loader />;
-  }
   return (
     <Container>
       <Inner>
+        <HeaderFilter
+          title={'Filter'}
+          right={<ButtonApply onApply={handleApply} />}
+          left={<ButtonClear onClear={handleClear} />}
+        />
         <Search
           title={'Name'}
           guide={'Give a name'}
-          selected={name}
-          select={setNameCharacter}
-          list={characters}
-          value={value}
-          setValue={setValue}
+          selected={filter.name}
+          onSelect={handleSearch}
+          list={getValues(nameQuery.data?.characters.results, 'name')}
+          value={valueName}
+          setValue={setValueName}
         />
-        <Select
+        <Search
           title={'Species'}
-          guide={'Select one'}
-          onSelect={speciesSelect}
-          selected={species}
-          types={unique(characters, 'species')}
+          guide={'Give a species'}
+          selected={filter.species}
+          onSelect={handleSpecies}
+          list={getValues(speciesQuery.data?.characters.results, 'species')}
+          value={valueSpecies}
+          setValue={setValueSpecies}
         />
         <Radio
           options={['Alive', 'Dead', 'Unknown']}
           title={'Status'}
-          selected={status}
-          onChangeSelect={(item: string) => handleStatus(item)}
+          selected={filter.status}
+          onChangeSelect={handleStatus}
         />
         <Radio
           options={['Female', 'Male', 'Genderless', 'Unknown']}
           title={'Gender'}
-          selected={gender}
-          onChangeSelect={(item: string) => handleGender(item)}
+          selected={filter.gender}
+          onChangeSelect={handleGender}
         />
       </Inner>
     </Container>
