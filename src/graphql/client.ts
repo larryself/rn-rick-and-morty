@@ -32,7 +32,7 @@ export const client = new ApolloClient({
             },
           },
           episodes: {
-            keyArgs: ['filter', ['name', 'season']],
+            keyArgs: ['filter', ['name', 'episode']],
             merge(existing: Episodes, incoming: Episodes) {
               if (existing) {
                 return {

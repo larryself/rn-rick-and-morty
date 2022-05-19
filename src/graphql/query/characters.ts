@@ -66,3 +66,14 @@ const CHARACTERS_NAME = gql`
     }
   }
 `;
+
+const CHARACTERS_SPECIES = gql`
+  query getCharactersSpecies($species: String) {
+    characters(filter: { name: $species }) {
+      results {
+        id
+        species
+      }
+    }
+  }
+`;

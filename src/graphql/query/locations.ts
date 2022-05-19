@@ -50,3 +50,23 @@ export const LOCATION_NAME = gql`
     }
   }
 `;
+export const LOCATION_TYPE = gql`
+  query getLocationsTYPE($type: String) {
+    locations(filter: { type: $type }) {
+      results {
+        id
+        type
+      }
+    }
+  }
+`;
+export const LOCATION_DIMENSION = gql`
+  query getLocationsDimension($dimension: String) {
+    locations(filter: { dimension: $dimension }) {
+      results {
+        id
+        dimension
+      }
+    }
+  }
+`;
