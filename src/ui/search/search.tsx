@@ -12,8 +12,8 @@ interface SearchProps {
   title: string;
   guide: string;
   selected: string;
-  select: (item: string) => void;
-  list?: [];
+  onSelect: (item: string) => void;
+  list?: string[];
   value: string;
   setValue: (item: string) => void;
 }
@@ -21,7 +21,7 @@ export const Search: FC<SearchProps> = ({
   title = '',
   guide = '',
   selected = '',
-  select,
+  onSelect,
   list,
   setValue,
   value,
@@ -32,9 +32,9 @@ export const Search: FC<SearchProps> = ({
       style={{ padding: 10 }}
       onPress={() => {
         setVisible(false);
-        select(item.name);
+        onSelect(item);
       }}>
-      <Text style={{}}>{item.name}</Text>
+      <Text style={{}}>{item}</Text>
     </TouchableOpacity>
   );
 
@@ -62,7 +62,7 @@ export const Search: FC<SearchProps> = ({
             data={list}
             numColumns={1}
             renderItem={renderItem}
-            keyExtractor={item => item.id}
+            keyExtractor={item => item}
             style={{ height: 200 }}
           />
         </View>

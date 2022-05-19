@@ -1,6 +1,6 @@
 import { Dictation } from 'assets/images/icons/dictation';
 import { Search } from 'assets/images/icons/search';
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { COLORS } from 'src/theme/colors';
 import { Container, Inner, Input } from './style';
 import { Line } from 'src/ui';
