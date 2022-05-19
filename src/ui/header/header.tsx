@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { SafeAreaView } from 'react-native';
 import { useNavigation } from 'src/navigation/routes';
 
@@ -12,7 +12,6 @@ export interface HeaderProps {
 
 export const Header: FC<HeaderProps> = ({ title, stack, filter }) => {
   const { navigate } = useNavigation();
-  const [showModal, setShowModal] = useState(false);
   return (
     <SafeAreaView>
       <Container>

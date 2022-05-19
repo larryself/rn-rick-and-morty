@@ -15,3 +15,4 @@ export { Search } from './search/search';
 export { SeasonContainer } from './seasonContainer/seasonContainer';
 export { Select } from './select/select';
 export { Line } from './line/line';
+export { HeaderFilter } from './headerFilter/headerFilter';
