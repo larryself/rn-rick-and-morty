@@ -7,7 +7,7 @@ import { Line } from 'src/ui';
 import { Container, Circle, CircleChecked, Guide, Inner, Title } from './style';
 
 export interface SelectProps {
-  selected: string | null;
+  selected: string;
   title: string;
   guide: string;
   types: string[];
@@ -44,7 +44,12 @@ export const Select: FC<SelectProps> = ({
       </Container>
       <Line />
       <ModalMenu showModal={visible} setShowModal={setVisible}>
-        <SelectList options={types} title={title} onChangeSelect={typeSelect} />
+        <SelectList
+          options={types}
+          title={title}
+          onChangeSelect={typeSelect}
+          selected={selected}
+        />
       </ModalMenu>
     </>
   );

@@ -16,8 +16,9 @@ export const Title = styled(Text)`
   padding: 8px 16px;
 `;
 
-export const SelectItem = styled(TouchableOpacity)`
+export const SelectItem = styled(TouchableOpacity)<{ selected: boolean }>`
   padding: 11px 0;
+  ${props => props.selected && 'opacity: .2'};
 `;
 
 export const SelectText = styled(Text)`

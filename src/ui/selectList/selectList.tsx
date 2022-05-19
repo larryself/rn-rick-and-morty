@@ -6,16 +6,20 @@ import { Inner, SelectItem, SelectText as Text, Title } from './style';
 export interface SelectListProps {
   title: string;
   options: string[];
+  selected: string;
   onChangeSelect: (item: string) => void;
 }
 
 export const SelectList: FC<SelectListProps> = ({
   title,
   options,
+  selected,
   onChangeSelect,
 }) => {
   const renderItem = ({ item }: { item: string }) => (
-    <SelectItem onPress={() => onChangeSelect(item)}>
+    <SelectItem
+      onPress={() => onChangeSelect(item)}
+      selected={selected === item}>
       <Text>{item}</Text>
     </SelectItem>
   );
