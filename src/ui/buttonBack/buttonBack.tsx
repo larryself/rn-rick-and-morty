@@ -1,4 +1,3 @@
-import { renderToStringWithData } from '@apollo/client/react/ssr';
 import React from 'react';
 import { ArrowBack } from 'assets/images/icons/arrowBack';
 import { useNavigation } from 'src/navigation/routes';

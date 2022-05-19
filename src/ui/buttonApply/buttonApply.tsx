@@ -1,29 +1,14 @@
 import React from 'react';
-import { useNavigation } from 'src/navigation/routes';
-import { useActions } from 'src/store/hooks/useAction';
 
 import { Button, Title } from './style';
 
-export const ButtonApply = ({ type }: { type: string }) => {
-  const { applyCharacter, applyEpisode, applyLocation } = useActions();
-  const navigation = useNavigation();
+type ButtonProps = {
+  onApply?: () => void;
+};
 
-  const handleButton = () => {
-    if (type === 'character') {
-      applyCharacter();
-    }
-
-    if (type === 'location') {
-      applyLocation();
-    }
-
-    if (type === 'episode') {
-      applyEpisode();
-    }
-    navigation.goBack();
-  };
+export const ButtonApply = ({ onApply }: ButtonProps) => {
   return (
-    <Button onPress={handleButton}>
+    <Button onPress={onApply}>
       <Title>Apply</Title>
     </Button>
   );
