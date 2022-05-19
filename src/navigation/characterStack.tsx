@@ -5,7 +5,7 @@ import {
   CharacterFilter,
   CharacterScreen,
 } from 'src/modules/character';
-import { Header, ButtonClear, ButtonApply, ButtonBack } from 'src/ui';
+import { Header, ButtonBack } from 'src/ui';
 import { HeaderFilter } from 'src/ui/headerFilter/headerFilter';
 
 import { Routes } from './routes';
@@ -54,13 +54,7 @@ export const CharacterStack = () => {
           name={Routes.CharacterFilter}
           component={CharacterFilter}
           options={{
-            header: () => (
-              <HeaderFilter
-                title={'Filter'}
-                left={<ButtonClear type={'character'} />}
-                right={<ButtonApply type={'character'} />}
-              />
-            ),
+            headerShown: false,
           }}
         />
       </Stack.Group>

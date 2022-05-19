@@ -1,5 +1,5 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import { CompositeScreenProps, useRoute } from '@react-navigation/native';
+import { CompositeScreenProps } from '@react-navigation/native';
 import { Routes } from 'src/navigation/routes';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 

@@ -5,8 +5,7 @@ import {
   EpisodeFilter,
   EpisodeScreen,
 } from 'src/modules/episode';
-import { Header, ButtonClear, ButtonApply, ButtonBack } from 'src/ui';
-import { HeaderFilter } from 'src/ui/headerFilter/headerFilter';
+import { Header, ButtonBack } from 'src/ui';
 
 import { Routes } from './routes';
 
@@ -53,13 +52,7 @@ export const EpisodeStack = () => {
           name={Routes.EpisodeFilter}
           component={EpisodeFilter}
           options={{
-            header: () => (
-              <HeaderFilter
-                title={'Filter'}
-                left={<ButtonClear type={'episode'} />}
-                right={<ButtonApply type={'episode'} />}
-              />
-            ),
+            headerShown: false,
           }}
         />
       </Stack.Group>

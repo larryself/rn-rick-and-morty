@@ -5,8 +5,7 @@ import {
   LocationFilter,
   LocationScreen,
 } from 'src/modules/location';
-import { Header, ButtonClear, ButtonApply, ButtonBack } from 'src/ui';
-import { HeaderFilter } from 'src/ui/headerFilter/headerFilter';
+import { Header, ButtonBack } from 'src/ui';
 
 import { Routes } from './routes';
 
@@ -53,13 +52,7 @@ export const LocationStack = () => {
           name={Routes.LocationFilter}
           component={LocationFilter}
           options={{
-            header: () => (
-              <HeaderFilter
-                title={'Filter'}
-                left={<ButtonClear type={'location'} />}
-                right={<ButtonApply type={'location'} />}
-              />
-            ),
+            headerShown: false,
           }}
         />
       </Stack.Group>
