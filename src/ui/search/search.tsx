@@ -6,7 +6,15 @@ import { HeaderFilter } from 'src/ui/headerFilter/headerFilter';
 import { ModalMenu } from 'src/ui/modal/modal';
 import { SearchInput } from 'src/ui/searchInput/searchInput';
 import { Line } from 'src/ui';
-import { Container, Curcle, CurcleChecked, Guide, Inner, Title } from './style';
+import {
+  Container,
+  Curcle,
+  CurcleChecked,
+  Guide,
+  Inner,
+  Title,
+  Box,
+} from './style';
 
 interface SearchProps {
   title: string;
@@ -34,7 +42,7 @@ export const Search: FC<SearchProps> = ({
         setVisible(false);
         onSelect(item);
       }}>
-      <Text style={{}}>{item}</Text>
+      <Text>{item}</Text>
     </TouchableOpacity>
   );
 
@@ -58,14 +66,14 @@ export const Search: FC<SearchProps> = ({
         <View>
           <HeaderFilter title={title} left={<ButtonBack />} />
           <SearchInput value={value} setValue={setValue} />
-          <View style={{ height: 200 }}>
+          <Box>
             <FlatList
               data={list}
               numColumns={1}
               renderItem={renderItem}
               keyExtractor={item => item}
             />
-          </View>
+          </Box>
         </View>
       </ModalMenu>
     </>

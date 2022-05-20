@@ -60,5 +60,4 @@ export const Input = styled(TextInput)`
 
 export const Box = styled(View)`
   height: 200px;
-  padding-left: 10px;
 `;

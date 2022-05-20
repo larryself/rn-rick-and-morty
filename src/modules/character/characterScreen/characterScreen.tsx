@@ -42,7 +42,7 @@ export const CharacterScreen = () => {
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        keyExtractor={(item, index) => `${(item.id, index)}`}
+        keyExtractor={item => item.id}
         onEndReached={page ? loadCharacters : null}
         onEndReachedThreshold={1}
         initialNumToRender={6}
