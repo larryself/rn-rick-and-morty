@@ -7,7 +7,7 @@ import {
   LocationsField,
 } from 'src/graphql/query/fragments';
 
-const CHARACTERS = gql`
+export const CHARACTERS = gql`
   ${CharactersField}
   ${InfoField}
   query getCharacters(
@@ -36,7 +36,7 @@ const CHARACTERS = gql`
   }
 `;
 
-const CHARACTER = gql`
+export const CHARACTER = gql`
   ${CharacterField}
   ${EpisodesField}
   ${LocationsField}
@@ -56,7 +56,7 @@ const CHARACTER = gql`
   }
 `;
 
-const CHARACTERS_NAME = gql`
+export const CHARACTERS_NAME = gql`
   query getCharactersName($name: String) {
     characters(filter: { name: $name }) {
       results {
@@ -67,9 +67,9 @@ const CHARACTERS_NAME = gql`
   }
 `;
 
-const CHARACTERS_SPECIES = gql`
+export const CHARACTERS_SPECIES = gql`
   query getCharactersSpecies($species: String) {
-    characters(filter: { name: $species }) {
+    characters(filter: { species: $species }) {
       results {
         id
         species

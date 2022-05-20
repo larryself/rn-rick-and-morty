@@ -5,7 +5,7 @@ import {
   InfoField,
 } from 'src/graphql/query/fragments';
 
-const EPISODES = gql`
+export const EPISODES = gql`
   ${EpisodesField}
   ${InfoField}
   query getEpisodes($page: Int, $name: String, $episode: String) {
@@ -20,7 +20,7 @@ const EPISODES = gql`
   }
 `;
 
-const EPISODE = gql`
+export const EPISODE = gql`
   ${EpisodesField}
   ${CharactersField}
   query getEpisode($id: ID!) {
@@ -32,7 +32,7 @@ const EPISODE = gql`
     }
   }
 `;
-const EPISODES_NAME = gql`
+export const EPISODES_NAME = gql`
   query getEpisodesName($name: String) {
     episodes(filter: { name: $name }) {
       results {
