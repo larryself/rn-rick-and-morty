@@ -48,8 +48,7 @@ export const CharacterStack = () => {
           }}
         />
       </Stack.Group>
-      <Stack.Group
-        screenOptions={{ presentation: 'modal', gestureEnabled: false }}>
+      <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen
           name={Routes.CharacterFilter}
           component={CharacterFilter}

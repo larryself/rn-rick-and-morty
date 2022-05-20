@@ -1,6 +1,9 @@
 import React from 'react';
 import { FlatList } from 'react-native';
-import { useGetCharactersQuery } from 'src/graphql/generated/graphql';
+import {
+  CharactersFragment,
+  useGetCharactersQuery,
+} from 'src/graphql/generated/graphql';
 import { useSelector } from 'src/store/hooks/useSelector';
 import { CharacterCard, Loader, Wrapper } from 'src/ui';
 
@@ -25,6 +28,10 @@ export const CharacterScreen = () => {
     });
   };
 
+  const renderItem = ({ item }: { item: CharactersFragment }) => (
+    <CharacterCard character={item} key={item.id} />
+  );
+
   if (loading) {
     return <Loader />;
   }
@@ -32,12 +39,13 @@ export const CharacterScreen = () => {
     <Wrapper>
       <FlatList
         data={characters}
-        renderItem={({ item }) => <CharacterCard character={item} />}
+        renderItem={renderItem}
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        keyExtractor={item => item.id}
+        keyExtractor={(item, index) => `${(item.id, index)}`}
         onEndReached={page ? loadCharacters : null}
-        onEndReachedThreshold={2}
+        onEndReachedThreshold={1}
+        initialNumToRender={6}
       />
     </Wrapper>
   );

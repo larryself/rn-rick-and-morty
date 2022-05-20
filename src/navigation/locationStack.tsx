@@ -46,8 +46,7 @@ export const LocationStack = () => {
           }}
         />
       </Stack.Group>
-      <Stack.Group
-        screenOptions={{ presentation: 'modal', gestureEnabled: false }}>
+      <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen
           name={Routes.LocationFilter}
           component={LocationFilter}

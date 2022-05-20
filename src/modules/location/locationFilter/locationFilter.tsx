@@ -9,15 +9,15 @@ import { useActions } from 'src/store/hooks/useAction';
 import { useSelector } from 'src/store/hooks/useSelector';
 import { HeaderFilter, ButtonClear, ButtonApply, Search } from 'src/ui';
 import { getValues } from 'src/utils/getValues';
-
 import { Container } from './style';
 
 export const LocationFilter = () => {
-  const { applyLocation, clearLocation } = useActions();
   const { name, type, dimension } = useSelector(state => state.location);
+  const { applyLocation, clearLocation } = useActions();
   const [valueName, setValueName] = useState(name);
-  const [valueType, setValueType] = useState(name);
-  const [valueDimension, setValueDimension] = useState(name);
+  const [valueType, setValueType] = useState(type);
+  const [valueDimension, setValueDimension] = useState(dimension);
+  const [filter, setFilter] = useState({ name, type, dimension });
   const nameQuery = useGetLocationsNameQuery({
     variables: { name: valueName },
   });
@@ -28,7 +28,6 @@ export const LocationFilter = () => {
     variables: { dimension: valueDimension },
   });
 
-  const [filter, setFilter] = useState({ name, type, dimension });
   const { goBack } = useNavigation();
   const handleApply = () => {
     applyLocation(filter);
@@ -47,7 +46,6 @@ export const LocationFilter = () => {
   };
 
   const handleDimension = (value: string) => {
-    console.log('va', value);
     if (value === filter.dimension) {
       setFilter({ ...filter, dimension: '' });
     } else {
@@ -62,7 +60,6 @@ export const LocationFilter = () => {
       setFilter({ ...filter, name: value });
     }
   };
-
   return (
     <Container>
       <HeaderFilter

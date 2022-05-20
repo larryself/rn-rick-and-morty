@@ -9,7 +9,7 @@ const { width } = Dimensions.get('screen');
 type CharacterProps = {
   character: CharactersFragment;
 };
-export const CharacterCard: FC<CharacterProps> = ({ character }) => {
+export const CharacterCard: FC<CharacterProps> = React.memo(({ character }) => {
   const { id, name, image, status } = character;
   const { navigate } = useNavigation();
 
@@ -32,4 +32,4 @@ export const CharacterCard: FC<CharacterProps> = ({ character }) => {
       </Description>
     </Container>
   );
-};
+});

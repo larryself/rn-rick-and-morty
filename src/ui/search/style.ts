@@ -57,3 +57,8 @@ export const Input = styled(TextInput)`
   border-radius: 10px;
   padding: 5px 10px;
 `;
+
+export const Box = styled(View)`
+  height: 200px;
+  padding-left: 10px;
+`;

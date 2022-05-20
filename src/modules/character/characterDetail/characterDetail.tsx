@@ -26,25 +26,25 @@ export const CharacterDetail = () => {
 
   return (
     <DetailContainer
-      img={data?.character?.image}
-      firstInfo={data?.character?.status}
-      title={data?.character?.name}
-      latterInfo={data?.character?.species}
+      img={data?.character.image}
+      firstInfo={data?.character.status}
+      title={data?.character.name}
+      latterInfo={data?.character.species}
       subTitle={'Informations'}>
       <Line />
       <Container>
         <SubTitle>Gender</SubTitle>
-        <Info>{data?.character?.gender}</Info>
+        <Info>{data?.character.gender}</Info>
         <Line />
       </Container>
       <Container>
         <SubTitle>Origin</SubTitle>
-        <Info>{data?.character?.origin?.name}</Info>
+        <Info>{data?.character.origin.name}</Info>
         <Line />
       </Container>
       <Container>
         <SubTitle>Type</SubTitle>
-        <Info>{data?.character?.type || 'unknown'}</Info>
+        <Info>{data?.character.type || 'unknown'}</Info>
         <Line />
       </Container>
       <Container>
@@ -53,8 +53,8 @@ export const CharacterDetail = () => {
             navigate(Routes.LocationStack, {
               screen: Routes.LocationDetail,
               params: {
-                id: data?.character?.location?.id,
-                title: data?.character?.location?.name,
+                id: data?.character.location.id,
+                title: data?.character.location.name,
               },
             });
           }}>
@@ -69,7 +69,7 @@ export const CharacterDetail = () => {
       <Title>Episodes</Title>
       <Line />
       <Wrap>
-        {data?.character?.episode?.map(episode => (
+        {data?.character.episode.map(episode => (
           <EpisodeCard key={episode.id} {...episode} />
         ))}
       </Wrap>

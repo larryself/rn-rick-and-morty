@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   useGetCharactersNameQuery,
-  useGetCharactersQuery,
   useGetCharactersSpeciesQuery,
 } from 'src/graphql/generated/graphql';
 import { useActions } from 'src/store/hooks/useAction';
@@ -17,7 +16,7 @@ export const CharacterFilter = () => {
   );
   const { applyCharacter, clearCharacter } = useActions();
   const [valueName, setValueName] = useState(name);
-  const [valueSpecies, setValueSpecies] = useState(name);
+  const [valueSpecies, setValueSpecies] = useState(species);
   const [filter, setFilter] = useState({ name, status, gender, species });
   const nameQuery = useGetCharactersNameQuery({
     variables: { name: valueName },
@@ -64,7 +63,6 @@ export const CharacterFilter = () => {
       setFilter({ ...filter, species: value });
     }
   };
-
   return (
     <Container>
       <Inner>

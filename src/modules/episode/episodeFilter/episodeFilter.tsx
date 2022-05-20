@@ -5,7 +5,7 @@ import { useActions } from 'src/store/hooks/useAction';
 import { useSelector } from 'src/store/hooks/useSelector';
 import { ButtonApply, ButtonClear, Search, Select } from 'src/ui';
 import { HeaderFilter } from 'src/ui/headerFilter/headerFilter';
-
+import { getValues } from 'src/utils/getValues';
 import { Container } from './style';
 
 export const EpisodeFilter = () => {
@@ -13,7 +13,7 @@ export const EpisodeFilter = () => {
   const { applyEpisode, clearEpisode } = useActions();
   const [searchName, setSearchName] = useState(name);
   const [filter, setFilter] = useState({ name, episode });
-  const { data, loading } = useGetEpisodesNameQuery({
+  const { data } = useGetEpisodesNameQuery({
     variables: { name: searchName },
   });
   const episodes = data?.episodes.results;

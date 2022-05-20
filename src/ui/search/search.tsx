@@ -56,15 +56,16 @@ export const Search: FC<SearchProps> = ({
       <Line />
       <ModalMenu setShowModal={setVisible} showModal={visible}>
         <View>
-          <HeaderFilter title={'Name'} left={<ButtonBack />} />
+          <HeaderFilter title={title} left={<ButtonBack />} />
           <SearchInput value={value} setValue={setValue} />
-          <FlatList
-            data={list}
-            numColumns={1}
-            renderItem={renderItem}
-            keyExtractor={item => item}
-            style={{ height: 200 }}
-          />
+          <View style={{ height: 200 }}>
+            <FlatList
+              data={list}
+              numColumns={1}
+              renderItem={renderItem}
+              keyExtractor={item => item}
+            />
+          </View>
         </View>
       </ModalMenu>
     </>
