@@ -13,7 +13,9 @@ export const HeaderFilter: FC<HeaderProps> = ({ left, title, right }) => {
     <SafeAreaView>
       <Container>
         <ButtonInner>{left}</ButtonInner>
-        <Title>{title}</Title>
+        <Title numberOfLines={1} ellipsizeMode={'tail'}>
+          {title}
+        </Title>
         <ButtonInner>{right}</ButtonInner>
       </Container>
     </SafeAreaView>

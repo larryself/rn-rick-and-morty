@@ -5,7 +5,7 @@ import {
   LocationFilter,
   LocationScreen,
 } from 'src/modules/location';
-import { Header, ButtonBack } from 'src/ui';
+import { Header, ButtonBack, HeaderFilter } from 'src/ui';
 import { Routes } from './routes';
 
 const Stack = createNativeStackNavigator();
@@ -20,7 +20,6 @@ export const LocationStack = () => {
           options={{
             header: props => {
               const title = 'Location';
-
               return (
                 <Header
                   {...props}
@@ -36,12 +35,14 @@ export const LocationStack = () => {
           name={Routes.LocationDetail}
           component={LocationDetail}
           options={{
-            headerTitleAlign: 'center',
-            headerTitleStyle: {
-              fontWeight: '900',
-              fontSize: 15,
+            header: ({ options }) => {
+              return (
+                <HeaderFilter
+                  title={options.title ?? ''}
+                  left={<ButtonBack />}
+                />
+              );
             },
-            headerLeft: () => <ButtonBack />,
           }}
         />
       </Stack.Group>

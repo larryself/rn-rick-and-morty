@@ -5,7 +5,7 @@ import {
   EpisodeFilter,
   EpisodeScreen,
 } from 'src/modules/episode';
-import { Header, ButtonBack } from 'src/ui';
+import { Header, ButtonBack, HeaderFilter } from 'src/ui';
 import { Routes } from './routes';
 
 const Stack = createNativeStackNavigator();
@@ -20,7 +20,6 @@ export const EpisodeStack = () => {
           options={{
             header: props => {
               const title = 'Episode';
-
               return (
                 <Header
                   {...props}
@@ -36,12 +35,14 @@ export const EpisodeStack = () => {
           name={Routes.EpisodeDetail}
           component={EpisodeDetail}
           options={{
-            headerTitleAlign: 'center',
-            headerTitleStyle: {
-              fontWeight: '900',
-              fontSize: 15,
+            header: ({ options }) => {
+              return (
+                <HeaderFilter
+                  title={options.title ?? ''}
+                  left={<ButtonBack />}
+                />
+              );
             },
-            headerLeft: () => <ButtonBack />,
           }}
         />
       </Stack.Group>

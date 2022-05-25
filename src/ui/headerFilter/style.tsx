@@ -15,6 +15,7 @@ export const Container = styled(View)`
 `;
 
 export const Title = styled(Text)`
+  max-width: 130px;
   font-weight: 900;
   font-size: 15px;
   line-height: 20px;
