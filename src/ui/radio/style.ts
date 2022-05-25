@@ -12,10 +12,6 @@ export const Container = styled(TouchableOpacity)`
   align-items: center;
 `;
 
-export const Wrap = styled(View)`
-  padding-left: 18px;
-`;
-
 export const Title = styled(Text)`
   font-weight: 400;
   font-size: 15px;

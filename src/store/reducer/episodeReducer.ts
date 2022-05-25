@@ -3,7 +3,7 @@ enum Episode {
   'APPLY_EPISODE' = 'APPLY_EPISODE',
 }
 
-interface EpisodeState {
+export interface EpisodeState {
   name: string;
   episode: string;
 }

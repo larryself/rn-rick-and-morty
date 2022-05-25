@@ -6,7 +6,6 @@ import {
   EpisodeScreen,
 } from 'src/modules/episode';
 import { Header, ButtonBack } from 'src/ui';
-
 import { Routes } from './routes';
 
 const Stack = createNativeStackNavigator();

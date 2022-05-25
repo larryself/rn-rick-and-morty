@@ -1,11 +1,7 @@
 import { Arrow } from 'assets/images/icons/arrow';
 import React, { FC, useState } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
-import { ButtonBack } from 'src/ui/buttonBack/buttonBack';
-import { HeaderFilter } from 'src/ui/headerFilter/headerFilter';
-import { ModalMenu } from 'src/ui/modal/modal';
-import { SearchInput } from 'src/ui/searchInput/searchInput';
-import { Line } from 'src/ui';
+import { Line, HeaderFilter, ButtonBack, ModalMenu, SearchInput } from 'src/ui';
 import {
   Container,
   Curcle,

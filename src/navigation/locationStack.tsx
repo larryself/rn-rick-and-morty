@@ -6,7 +6,6 @@ import {
   LocationScreen,
 } from 'src/modules/location';
 import { Header, ButtonBack } from 'src/ui';
-
 import { Routes } from './routes';
 
 const Stack = createNativeStackNavigator();

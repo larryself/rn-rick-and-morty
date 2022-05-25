@@ -3,8 +3,7 @@ import { useGetEpisodesNameQuery } from 'src/graphql/generated/graphql';
 import { useNavigation } from 'src/navigation/routes';
 import { useActions } from 'src/store/hooks/useAction';
 import { useSelector } from 'src/store/hooks/useSelector';
-import { ButtonApply, ButtonClear, Search, Select } from 'src/ui';
-import { HeaderFilter } from 'src/ui/headerFilter/headerFilter';
+import { ButtonApply, ButtonClear, Search, Select, HeaderFilter } from 'src/ui';
 import { getValues } from 'src/utils/getValues';
 import { Container } from './style';
 

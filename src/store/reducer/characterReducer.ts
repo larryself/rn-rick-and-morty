@@ -3,7 +3,7 @@ enum Character {
   'APPLY_CHARACTER' = 'APPLY_CHARACTER',
 }
 
-interface CharacterState {
+export interface CharacterState {
   name: string;
   species: string;
   status: string;

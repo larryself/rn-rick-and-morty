@@ -3,7 +3,7 @@ enum Location {
   'APPLY_LOCATION' = 'APPLY_LOCATION',
 }
 
-interface LocationState {
+export interface LocationState {
   name: string;
   dimension: string;
   type: string;

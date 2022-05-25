@@ -16,3 +16,5 @@ export { SeasonContainer } from './seasonContainer/seasonContainer';
 export { Select } from './select/select';
 export { Line } from './line/line';
 export { HeaderFilter } from './headerFilter/headerFilter';
+export { ModalMenu } from 'src/ui/modal/modal';
+export { SearchInput } from 'src/ui/searchInput/searchInput';

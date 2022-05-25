@@ -5,9 +5,7 @@ import {
   CharacterFilter,
   CharacterScreen,
 } from 'src/modules/character';
-import { Header, ButtonBack } from 'src/ui';
-import { HeaderFilter } from 'src/ui/headerFilter/headerFilter';
-
+import { Header, ButtonBack, HeaderFilter } from 'src/ui';
 import { Routes } from './routes';
 
 const Stack = createNativeStackNavigator();

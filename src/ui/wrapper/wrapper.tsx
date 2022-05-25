@@ -1,5 +1,4 @@
 import React, { FC, ReactNode } from 'react';
-
 import { Container, Inner } from './style';
 
 export interface WrapperProps {

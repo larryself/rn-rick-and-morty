@@ -5,8 +5,7 @@ import { Arrow } from 'assets/images/icons/arrow';
 import { useGetCharacterQuery } from 'src/graphql/generated/graphql';
 import { Routes, useNavigation } from 'src/navigation/routes';
 import { CharacterTabScreenProps } from 'src/navigation/types';
-import { DetailContainer } from 'src/ui/detailWrapper/detailWrapper';
-import { EpisodeCard, Loader } from 'src/ui';
+import { EpisodeCard, Loader, DetailContainer } from 'src/ui';
 import { Line } from 'src/ui';
 import { Container, Info, Location, SubTitle, Title, Wrap } from './style';
 

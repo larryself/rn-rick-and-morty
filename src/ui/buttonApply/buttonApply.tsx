@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Button, Title } from './style';
 
 type ButtonProps = {

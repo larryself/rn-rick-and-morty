@@ -1,9 +1,7 @@
 import React, { FC, useState } from 'react';
 import { View } from 'react-native';
 import { Arrow } from 'assets/images/icons/arrow';
-import { ModalMenu } from 'src/ui/modal/modal';
-import { SelectList } from '../selectList/selectList';
-import { Line } from 'src/ui';
+import { Line, SelectList, ModalMenu } from 'src/ui';
 import { Container, Circle, CircleChecked, Guide, Inner, Title } from './style';
 
 export interface SelectProps {

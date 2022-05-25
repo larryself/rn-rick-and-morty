@@ -66,9 +66,3 @@ export const SubTitle = styled(Text)`
   color: ${COLORS.GRAY_1};
   padding: 20px 16px 10px;
 `;
-
-export const Wrap = styled(View)`
-  flex: 1;
-  flex-direction: row;
-  flex-wrap: wrap;
-`;
