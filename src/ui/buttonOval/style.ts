@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 import { COLORS } from 'src/theme/colors';
 
-export const Button = styled(TouchableOpacity)`
+export const ButtonContainer = styled(TouchableOpacity)`
   flex-direction: row;
   align-items: center;
   background-color: ${COLORS.INDIGO};
