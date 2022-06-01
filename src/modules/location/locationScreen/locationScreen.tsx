@@ -11,9 +11,9 @@ export const LocationScreen = () => {
   const { name, type, dimension } = useSelector(state => state.location);
   const { data, loading, fetchMore } = useGetLocationsQuery({
     variables: {
-      name,
-      type,
-      dimension,
+      name: name || '',
+      type: type || '',
+      dimension: dimension || '',
       page: 1,
     },
   });

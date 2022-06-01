@@ -1,10 +1,10 @@
 import { Dispatch } from 'react';
+import { LocationState } from 'src/store/reducer/locationReducer';
 
 import { LocationAction, LocationActionTypes } from '../types';
 
 export const applyLocation =
-  (filter: { dimension: string; type: string; name: string }) =>
-  (dispatch: Dispatch<LocationAction>) => {
+  (filter: LocationState) => (dispatch: Dispatch<LocationAction>) => {
     dispatch({
       type: LocationActionTypes.APPLY_LOCATION,
       payload: filter,

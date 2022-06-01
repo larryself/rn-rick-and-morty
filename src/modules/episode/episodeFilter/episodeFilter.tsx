@@ -3,18 +3,19 @@ import { useGetEpisodesNameQuery } from 'src/graphql/generated/graphql';
 import { useNavigation } from 'src/navigation/routes';
 import { useActions } from 'src/store/hooks/useAction';
 import { useSelector } from 'src/store/hooks/useSelector';
-import { ButtonApply, ButtonClear, Search, Select, HeaderFilter } from 'src/ui';
+import { ButtonOval, Search, Select, HeaderFilter, ButtonClear } from 'src/ui';
 import { getValues } from 'src/utils/getValues';
 import { Container } from './style';
 
 export const EpisodeFilter = () => {
   const { name, episode } = useSelector(state => state.episode);
   const { applyEpisode, clearEpisode } = useActions();
-  const [searchName, setSearchName] = useState(name);
+  const [searchName, setSearchName] = useState(name || '');
   const [filter, setFilter] = useState({ name, episode });
   const { data } = useGetEpisodesNameQuery({
     variables: { name: searchName },
   });
+  const isEmpty = Object.values(filter).join('');
   const episodes = data?.episodes.results;
   const { goBack } = useNavigation();
   const handleApply = () => {
@@ -28,14 +29,14 @@ export const EpisodeFilter = () => {
 
   const handleSearch = (value: string) => {
     if (value === filter.name) {
-      setFilter({ ...filter, name: '' });
+      setFilter({ ...filter, name: null });
     } else {
       setFilter({ ...filter, name: value });
     }
   };
   const seasonSelect = (value: string) => {
     if (value === filter.episode) {
-      setFilter({ ...filter, episode: '' });
+      setFilter({ ...filter, episode: null });
     } else {
       setFilter({ ...filter, episode: value });
     }
@@ -45,8 +46,10 @@ export const EpisodeFilter = () => {
     <Container>
       <HeaderFilter
         title={'Filter'}
-        right={<ButtonApply onApply={handleApply} />}
-        left={<ButtonClear onClear={handleClear} />}
+        right={<ButtonOval onPress={handleApply} title={'Apply'} />}
+        left={
+          !!isEmpty && <ButtonClear onPress={handleClear} title={'Clear'} />
+        }
       />
       <Search
         title={'Name'}

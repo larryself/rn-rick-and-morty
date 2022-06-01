@@ -1,10 +1,10 @@
 import { Dispatch } from 'react';
+import { EpisodeState } from 'src/store/reducer/episodeReducer';
 
 import { EpisodeAction, EpisodeActionTypes } from '../types';
 
 export const applyEpisode =
-  (filter: { episode: string; name: string }) =>
-  (dispatch: Dispatch<EpisodeAction>) => {
+  (filter: EpisodeState) => (dispatch: Dispatch<EpisodeAction>) => {
     dispatch({
       type: EpisodeActionTypes.APPLY_EPISODE,
       payload: filter,

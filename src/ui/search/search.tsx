@@ -1,11 +1,18 @@
 import { Arrow } from 'assets/images/icons/arrow';
 import React, { FC, useState } from 'react';
-import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+import {
+  FlatList,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { Line, HeaderFilter, ButtonBack, ModalMenu, SearchInput } from 'src/ui';
 import {
   Container,
-  Curcle,
-  CurcleChecked,
+  Circle,
+  CircleChecked,
   Guide,
   Inner,
   Title,
@@ -15,12 +22,13 @@ import {
 interface SearchProps {
   title: string;
   guide: string;
-  selected: string;
+  selected: string | null;
   onSelect: (item: string) => void;
   list?: string[];
-  value: string;
+  value: string | null;
   setValue: (item: string) => void;
 }
+
 export const Search: FC<SearchProps> = ({
   title = '',
   guide = '',
@@ -28,7 +36,7 @@ export const Search: FC<SearchProps> = ({
   onSelect,
   list,
   setValue,
-  value,
+  value = '',
 }) => {
   const [visible, setVisible] = useState(false);
   const renderItem = ({ item }: { item: any }) => (
@@ -46,9 +54,9 @@ export const Search: FC<SearchProps> = ({
     <>
       <Line />
       <Container onPress={() => setVisible(true)}>
-        <Curcle selected={selected}>
-          <CurcleChecked selected={selected} />
-        </Curcle>
+        <Circle selected={selected}>
+          <CircleChecked selected={selected} />
+        </Circle>
         <Inner>
           <View>
             <Title>{title}</Title>
@@ -59,7 +67,7 @@ export const Search: FC<SearchProps> = ({
       </Container>
       <Line />
       <ModalMenu setShowModal={setVisible} showModal={visible}>
-        <View>
+        <View style={{ height: 300 }}>
           <HeaderFilter title={title} left={<ButtonBack />} />
           <SearchInput value={value} setValue={setValue} />
           <Box>
@@ -68,6 +76,7 @@ export const Search: FC<SearchProps> = ({
               numColumns={1}
               renderItem={renderItem}
               keyExtractor={item => item}
+              showsVerticalScrollIndicator={false}
             />
           </Box>
         </View>

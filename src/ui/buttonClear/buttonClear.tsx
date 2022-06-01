@@ -3,13 +3,14 @@ import React from 'react';
 import { ButtonBlock, Title } from './style';
 
 type ButtonProps = {
-  onClear?: () => void;
+  title: string;
+  onPress?: () => void;
 };
 
-export const ButtonClear = ({ onClear }: ButtonProps) => {
+export const ButtonClear = ({ title, onPress }: ButtonProps) => {
   return (
-    <ButtonBlock onPress={onClear}>
-      <Title>Clear</Title>
+    <ButtonBlock onPress={onPress}>
+      <Title>{title}</Title>
     </ButtonBlock>
   );
 };

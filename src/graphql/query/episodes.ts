@@ -3,7 +3,7 @@ import {
   CharactersField,
   EpisodesField,
   InfoField,
-} from 'src/graphql/query/fragments';
+} from 'src/graphql/fragments/fragments';
 
 export const EPISODES = gql`
   ${EpisodesField}

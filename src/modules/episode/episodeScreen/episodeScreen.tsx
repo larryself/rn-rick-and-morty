@@ -10,7 +10,7 @@ import { EpisodeCard, Wrapper, Loader, Line } from 'src/ui';
 export const EpisodeScreen = () => {
   const { name, episode } = useSelector(state => state.episode);
   const { data, loading, fetchMore } = useGetEpisodesQuery({
-    variables: { name, episode, page: 1 },
+    variables: { name: name || '', episode: episode || '', page: 1 },
   });
   const episodes = data?.episodes.results;
   const page = data?.episodes.info.next;

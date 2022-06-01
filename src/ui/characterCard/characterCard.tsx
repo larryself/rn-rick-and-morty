@@ -12,7 +12,6 @@ type CharacterProps = {
 export const CharacterCard: FC<CharacterProps> = React.memo(({ character }) => {
   const { id, name, image, status } = character;
   const { navigate } = useNavigation();
-
   return (
     <Container
       width={width}

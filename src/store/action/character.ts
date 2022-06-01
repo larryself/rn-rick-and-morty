@@ -1,10 +1,10 @@
 import { Dispatch } from 'react';
+import { CharacterState } from 'src/store/reducer/characterReducer';
 
 import { CharacterAction, CharacterActionTypes } from '../types';
 
 export const applyCharacter =
-  (filter: { name: string; status: string; species: string; gender: string }) =>
-  (dispatch: Dispatch<CharacterAction>) => {
+  (filter: CharacterState) => (dispatch: Dispatch<CharacterAction>) => {
     dispatch({
       type: CharacterActionTypes.APPLY_CHARACTER,
       payload: filter,

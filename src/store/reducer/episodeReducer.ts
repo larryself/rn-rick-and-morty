@@ -4,13 +4,13 @@ enum Episode {
 }
 
 export interface EpisodeState {
-  name: string;
-  episode: string;
+  name: string | null;
+  episode: string | null;
 }
 
 const initialState: EpisodeState = {
-  name: '',
-  episode: '',
+  name: null,
+  episode: null,
 };
 
 interface EpisodeAction {
@@ -27,7 +27,7 @@ export const episodeReducer = (
       return { ...state, ...action.payload };
 
     case Episode.CLEAR_EPISODE:
-      return { name: '', episode: '' };
+      return { name: null, episode: null };
 
     default:
       return state;

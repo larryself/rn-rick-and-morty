@@ -4,15 +4,15 @@ enum Location {
 }
 
 export interface LocationState {
-  name: string;
-  dimension: string;
-  type: string;
+  name: string | null;
+  dimension: string | null;
+  type: string | null;
 }
 
 const initialState: LocationState = {
-  name: '',
-  type: '',
-  dimension: '',
+  name: null,
+  type: null,
+  dimension: null,
 };
 
 interface LocationAction {
@@ -29,7 +29,7 @@ export const locationReducer = (
       return { ...state, ...action.payload };
 
     case Location.CLEAR_LOCATION:
-      return { name: '', type: '', dimension: '' };
+      return { name: null, type: null, dimension: null };
 
     default:
       return state;

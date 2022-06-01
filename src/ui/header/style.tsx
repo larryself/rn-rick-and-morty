@@ -17,9 +17,10 @@ export const Title = styled(Text)`
 `;
 
 export const Button = styled(TouchableOpacity)`
-  width: 50%;
   padding: 11px 0;
   align-self: flex-end;
+  flex-direction: row;
+  align-items: center;
 `;
 
 export const ButtonText = styled(Text)`
@@ -29,4 +30,12 @@ export const ButtonText = styled(Text)`
   text-align: right;
   letter-spacing: -0.41px;
   color: ${COLORS.INDIGO};
+`;
+
+export const Circle = styled(View)`
+  height: 12px;
+  width: 12px;
+  background: ${COLORS.INDIGO};
+  border-radius: 6px;
+  margin-right: 6px;
 `;

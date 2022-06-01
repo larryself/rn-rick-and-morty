@@ -5,7 +5,7 @@ import { Line, SelectList, ModalMenu } from 'src/ui';
 import { Container, Circle, CircleChecked, Guide, Inner, Title } from './style';
 
 export interface SelectProps {
-  selected: string;
+  selected: string | null;
   title: string;
   guide: string;
   types: string[];

@@ -6,7 +6,7 @@ import { Container, Inner, Input } from './style';
 import { Line } from 'src/ui';
 
 interface SearchInputProps {
-  value: string;
+  value: string | null;
   setValue: (value: string) => void;
 }
 
@@ -20,7 +20,7 @@ export const SearchInput: FC<SearchInputProps> = ({ value, setValue }) => {
             placeholder="Search"
             keyboardType={'default'}
             placeholderTextColor={COLORS.text}
-            value={value}
+            value={value || ''}
             onChange={item => setValue(item.nativeEvent.text)}
           />
           <Dictation />

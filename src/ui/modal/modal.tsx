@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import { KeyboardAvoidingView } from 'react-native';
+import { KeyboardAvoidingView, Platform } from 'react-native';
 import { StyledModal, Container } from './style';
 
 interface IModalMenu {
@@ -21,13 +21,14 @@ export const ModalMenu: FC<IModalMenu> = ({
       onSwipeComplete={closeModal}
       onBackButtonPress={closeModal}
       onBackdropPress={closeModal}
-      swipeDirection={['down']}
       useNativeDriverForBackdrop
       statusBarTranslucent
       backdropOpacity={0.1}
       useNativeDriver
-      hideModalContentWhileAnimating>
-      <KeyboardAvoidingView behavior={'position'} enabled>
+      hideModalContentWhileAnimating
+      avoidKeyboard>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'height' : 'position'}>
         <Container>{children}</Container>
       </KeyboardAvoidingView>
     </StyledModal>

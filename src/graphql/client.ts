@@ -10,37 +10,46 @@ export const client = new ApolloClient({
           characters: {
             keyArgs: ['filter', ['name', 'species', 'gender', 'status']],
             merge(existing: Characters, incoming: Characters) {
-              if (existing) {
-                return {
-                  ...incoming,
-                  results: [...existing.results, ...incoming.results],
-                };
+              if (!existing) {
+                return incoming;
               }
-              return incoming;
+              if (existing.info.next === incoming.info.next) {
+                return existing;
+              }
+              return {
+                ...incoming,
+                results: [...existing.results, ...incoming.results],
+              };
             },
           },
           locations: {
             keyArgs: ['filter', ['name', 'dimension', 'type']],
             merge(existing: Locations, incoming: Locations) {
-              if (existing) {
-                return {
-                  ...incoming,
-                  results: [...existing.results, ...incoming.results],
-                };
+              if (!existing) {
+                return incoming;
               }
-              return incoming;
+              if (existing.info.next === incoming.info.next) {
+                return existing;
+              }
+              return {
+                ...incoming,
+                results: [...existing.results, ...incoming.results],
+              };
             },
           },
           episodes: {
             keyArgs: ['filter', ['name', 'episode']],
             merge(existing: Episodes, incoming: Episodes) {
-              if (existing) {
-                return {
-                  ...incoming,
-                  results: [...existing.results, ...incoming.results],
-                };
+              if (!existing) {
+                return incoming;
               }
-              return incoming;
+              if (existing.info.next === incoming.info.next) {
+                return existing;
+              }
+              return {
+                ...incoming,
+                results: [...existing.results, ...incoming.results],
+              };
             },
           },
         },

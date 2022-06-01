@@ -6,18 +6,19 @@ import {
 import { useActions } from 'src/store/hooks/useAction';
 import { useSelector } from 'src/store/hooks/useSelector';
 import { useNavigation } from 'src/navigation/routes';
-import { HeaderFilter, ButtonApply, ButtonClear, Radio, Search } from 'src/ui';
+import { HeaderFilter, ButtonOval, Radio, Search, ButtonClear } from 'src/ui';
 import { getValues } from 'src/utils/getValues';
 import { Container, Inner } from './style';
 
 export const CharacterFilter = () => {
-  const { species, status, gender, name } = useSelector(
-    state => state.character
-  );
+  const characterFilter = useSelector(state => state.character);
   const { applyCharacter, clearCharacter } = useActions();
-  const [valueName, setValueName] = useState(name);
-  const [valueSpecies, setValueSpecies] = useState(species);
-  const [filter, setFilter] = useState({ name, status, gender, species });
+  const [valueName, setValueName] = useState(characterFilter.name || '');
+  const [valueSpecies, setValueSpecies] = useState(
+    characterFilter.species || ''
+  );
+  const [filter, setFilter] = useState(characterFilter);
+  const isEmpty = Object.values(filter).join('');
   const nameQuery = useGetCharactersNameQuery({
     variables: { name: valueName },
   });
@@ -35,7 +36,7 @@ export const CharacterFilter = () => {
   };
   const handleSearch = (value: string) => {
     if (value === filter.name) {
-      setFilter({ ...filter, name: '' });
+      setFilter({ ...filter, name: null });
     } else {
       setFilter({ ...filter, name: value });
     }
@@ -43,7 +44,7 @@ export const CharacterFilter = () => {
 
   const handleStatus = (value: string) => {
     if (value === filter.status) {
-      setFilter({ ...filter, status: '' });
+      setFilter({ ...filter, status: null });
     } else {
       setFilter({ ...filter, status: value });
     }
@@ -51,14 +52,14 @@ export const CharacterFilter = () => {
 
   const handleGender = (value: string) => {
     if (value === filter.gender) {
-      setFilter({ ...filter, gender: '' });
+      setFilter({ ...filter, gender: null });
     } else {
       setFilter({ ...filter, gender: value });
     }
   };
   const handleSpecies = (value: string) => {
     if (value === filter.species) {
-      setFilter({ ...filter, species: '' });
+      setFilter({ ...filter, species: null });
     } else {
       setFilter({ ...filter, species: value });
     }
@@ -68,8 +69,10 @@ export const CharacterFilter = () => {
       <Inner>
         <HeaderFilter
           title={'Filter'}
-          right={<ButtonApply onApply={handleApply} />}
-          left={<ButtonClear onClear={handleClear} />}
+          right={<ButtonOval onPress={handleApply} title={'Apply'} />}
+          left={
+            !!isEmpty && <ButtonClear onPress={handleClear} title={'Clear'} />
+          }
         />
         <Search
           title={'Name'}

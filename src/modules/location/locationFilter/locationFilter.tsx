@@ -7,17 +7,18 @@ import {
 import { useNavigation } from 'src/navigation/routes';
 import { useActions } from 'src/store/hooks/useAction';
 import { useSelector } from 'src/store/hooks/useSelector';
-import { HeaderFilter, ButtonClear, ButtonApply, Search } from 'src/ui';
+import { HeaderFilter, ButtonOval, Search, ButtonClear } from 'src/ui';
 import { getValues } from 'src/utils/getValues';
 import { Container } from './style';
 
 export const LocationFilter = () => {
   const { name, type, dimension } = useSelector(state => state.location);
   const { applyLocation, clearLocation } = useActions();
-  const [valueName, setValueName] = useState(name);
-  const [valueType, setValueType] = useState(type);
-  const [valueDimension, setValueDimension] = useState(dimension);
+  const [valueName, setValueName] = useState(name || '');
+  const [valueType, setValueType] = useState(type || '');
+  const [valueDimension, setValueDimension] = useState(dimension || '');
   const [filter, setFilter] = useState({ name, type, dimension });
+  const isEmpty = Object.values(filter).join('');
   const nameQuery = useGetLocationsNameQuery({
     variables: { name: valueName },
   });
@@ -39,7 +40,7 @@ export const LocationFilter = () => {
   };
   const handleType = (value: string) => {
     if (value === filter.type) {
-      setFilter({ ...filter, type: '' });
+      setFilter({ ...filter, type: null });
     } else {
       setFilter({ ...filter, type: value });
     }
@@ -47,7 +48,7 @@ export const LocationFilter = () => {
 
   const handleDimension = (value: string) => {
     if (value === filter.dimension) {
-      setFilter({ ...filter, dimension: '' });
+      setFilter({ ...filter, dimension: null });
     } else {
       setFilter({ ...filter, dimension: value });
     }
@@ -55,7 +56,7 @@ export const LocationFilter = () => {
 
   const handleName = (value: string) => {
     if (value === filter.name) {
-      setFilter({ ...filter, name: '' });
+      setFilter({ ...filter, name: null });
     } else {
       setFilter({ ...filter, name: value });
     }
@@ -64,8 +65,10 @@ export const LocationFilter = () => {
     <Container>
       <HeaderFilter
         title={'Filter'}
-        right={<ButtonApply onApply={handleApply} />}
-        left={<ButtonClear onClear={handleClear} />}
+        right={<ButtonOval onPress={handleApply} title={'Apply'} />}
+        left={
+          !!isEmpty && <ButtonClear onPress={handleClear} title={'Clear'} />
+        }
       />
       <Search
         title={'Name'}

@@ -4,17 +4,17 @@ enum Character {
 }
 
 export interface CharacterState {
-  name: string;
-  species: string;
-  status: string;
-  gender: string;
+  name: string | null;
+  species: string | null;
+  status: string | null;
+  gender: string | null;
 }
 
-const initialState: CharacterState = {
-  name: '',
-  species: '',
-  status: '',
-  gender: '',
+export const initialState: CharacterState = {
+  name: null,
+  species: null,
+  status: null,
+  gender: null,
 };
 
 interface CharacterAction {
@@ -32,10 +32,10 @@ export const characterReducer = (
 
     case Character.CLEAR_CHARACTER:
       return {
-        name: '',
-        species: '',
-        status: '',
-        gender: '',
+        name: null,
+        species: null,
+        status: null,
+        gender: null,
       };
 
     default:

@@ -1,7 +1,7 @@
 export { Wrapper } from './wrapper/wrapper';
 export { SelectList } from './selectList/selectList';
 export { ButtonBack } from './buttonBack/buttonBack';
-export { ButtonApply } from './buttonApply/buttonApply';
+export { ButtonOval } from 'src/ui/buttonOval/buttonOval';
 export { ButtonClear } from './buttonClear/buttonClear';
 export { CharacterCard } from './characterCard/characterCard';
 export { DetailContainer } from './detailWrapper/detailWrapper';
