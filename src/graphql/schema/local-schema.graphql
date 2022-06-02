@@ -1,0 +1,39 @@
+scalar State
+directive @client on FIELD
+
+type CharacterFilter {
+  name: String
+  status: String
+  species: String
+  gender: String
+}
+
+type EpisodeFilter {
+  name: String
+  episode: String
+}
+
+type LocationFilter {
+  name: String
+  type: String
+  dimension: String
+}
+
+type Filters {
+  locationFilter: LocationFilter
+  episodeFilter: EpisodeFilter
+  characterFilter: CharacterFilter
+}
+
+extend type Query {
+  filters: Filters
+  locationFilter: LocationFilter
+  episodeFilter: EpisodeFilter
+  characterFilter: CharacterFilter
+}
+
+extend type Mutation {
+    episodeFilter(name: String, episode: String): String
+    locationFilter(name: String, type: String, dimension: String):  String
+    characterFilter(name: String, status: String, species: String, gender: String):  String
+}

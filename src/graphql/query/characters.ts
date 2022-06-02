@@ -5,7 +5,7 @@ import {
   EpisodesField,
   InfoField,
   LocationsField,
-} from 'src/graphql/fragments/fragments';
+} from 'src/graphql/query/fragments';
 
 export const CHARACTERS = gql`
   ${CharactersField}
