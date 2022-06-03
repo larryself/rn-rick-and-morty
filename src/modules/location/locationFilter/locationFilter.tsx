@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
+import { useLocationFilter } from 'src/graphql/client/locationFilter';
 import {
   useGetLocationsDimensionQuery,
   useGetLocationsNameQuery,
   useGetLocationsTypeQuery,
 } from 'src/graphql/generated/graphql';
 import { useNavigation } from 'src/navigation/routes';
-import { useActions } from 'src/store/hooks/useAction';
-import { useSelector } from 'src/store/hooks/useSelector';
 import { HeaderFilter, ButtonOval, Search, ButtonClear } from 'src/ui';
 import { getValues } from 'src/utils/getValues';
 import { Container } from './style';
 
 export const LocationFilter = () => {
-  const { name, type, dimension } = useSelector(state => state.location);
-  const { applyLocation, clearLocation } = useActions();
-  const [valueName, setValueName] = useState(name || '');
-  const [valueType, setValueType] = useState(type || '');
-  const [valueDimension, setValueDimension] = useState(dimension || '');
+  const {
+    filter: { name, type, dimension },
+    clearFilter,
+    editFilter,
+  } = useLocationFilter();
+  const [valueName, setValueName] = useState(name);
+  const [valueType, setValueType] = useState(type);
+  const [valueDimension, setValueDimension] = useState(dimension);
   const [filter, setFilter] = useState({ name, type, dimension });
   const isEmpty = Object.values(filter).join('');
   const nameQuery = useGetLocationsNameQuery({
@@ -28,36 +30,42 @@ export const LocationFilter = () => {
   const dimensionQuery = useGetLocationsDimensionQuery({
     variables: { dimension: valueDimension },
   });
-
   const { goBack } = useNavigation();
+
   const handleApply = () => {
-    applyLocation(filter);
+    editFilter(filter);
     goBack();
   };
   const handleClear = () => {
-    clearLocation();
-    goBack();
+    setFilter({ name: '', type: '', dimension: '' });
+    clearFilter();
   };
   const handleType = (value: string) => {
     if (value === filter.type) {
-      setFilter({ ...filter, type: null });
+      setValueType('');
+      setFilter({ ...filter, type: '' });
     } else {
+      setValueType(value);
       setFilter({ ...filter, type: value });
     }
   };
 
   const handleDimension = (value: string) => {
     if (value === filter.dimension) {
-      setFilter({ ...filter, dimension: null });
+      setValueDimension('');
+      setFilter({ ...filter, dimension: '' });
     } else {
+      setValueDimension(value);
       setFilter({ ...filter, dimension: value });
     }
   };
 
   const handleName = (value: string) => {
     if (value === filter.name) {
-      setFilter({ ...filter, name: null });
+      setValueName('');
+      setFilter({ ...filter, name: '' });
     } else {
+      setValueName(value);
       setFilter({ ...filter, name: value });
     }
   };

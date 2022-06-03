@@ -1,19 +1,18 @@
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+
 import { Arrow } from 'assets/images/icons/arrow';
 import { useGetCharacterQuery } from 'src/graphql/generated/graphql';
 import { Routes, useNavigation } from 'src/navigation/routes';
-import { CharacterTabScreenProps } from 'src/navigation/types';
-import { EpisodeCard, Loader, DetailContainer } from 'src/ui';
-import { Line } from 'src/ui';
+import { useRoute } from 'src/navigation/types';
+import { EpisodeCard, Loader, DetailContainer, Line } from 'src/ui';
 import { Container, Info, Location, SubTitle, Title, Wrap } from './style';
 
 export const CharacterDetail = () => {
   const { setOptions, navigate } = useNavigation();
   const {
     params: { title, id },
-  } = useRoute<CharacterTabScreenProps<Routes.CharacterDetail>['route']>();
+  } = useRoute();
   const { data, loading } = useGetCharacterQuery({ variables: { id } });
   useEffect(() => {
     setOptions({ title });

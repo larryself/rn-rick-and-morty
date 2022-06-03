@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
+import { useEpisodeFilter } from 'src/graphql/client/episodeFilter';
 import { useGetEpisodesNameQuery } from 'src/graphql/generated/graphql';
 import { useNavigation } from 'src/navigation/routes';
-import { useActions } from 'src/store/hooks/useAction';
-import { useSelector } from 'src/store/hooks/useSelector';
 import { ButtonOval, Search, Select, HeaderFilter, ButtonClear } from 'src/ui';
 import { getValues } from 'src/utils/getValues';
 import { Container } from './style';
 
 export const EpisodeFilter = () => {
-  const { name, episode } = useSelector(state => state.episode);
-  const { applyEpisode, clearEpisode } = useActions();
-  const [searchName, setSearchName] = useState(name || '');
+  const {
+    filter: { name, episode },
+    clearFilter,
+    editFilter,
+  } = useEpisodeFilter();
+  const [searchName, setSearchName] = useState(name);
   const [filter, setFilter] = useState({ name, episode });
   const { data } = useGetEpisodesNameQuery({
     variables: { name: searchName },
@@ -19,24 +21,26 @@ export const EpisodeFilter = () => {
   const episodes = data?.episodes.results;
   const { goBack } = useNavigation();
   const handleApply = () => {
-    applyEpisode(filter);
+    editFilter(filter);
     goBack();
   };
   const handleClear = () => {
-    clearEpisode();
-    goBack();
+    setFilter({ name: '', episode: '' });
+    clearFilter();
   };
 
   const handleSearch = (value: string) => {
     if (value === filter.name) {
-      setFilter({ ...filter, name: null });
+      setSearchName('');
+      setFilter({ ...filter, name: '' });
     } else {
+      setSearchName(value);
       setFilter({ ...filter, name: value });
     }
   };
   const seasonSelect = (value: string) => {
     if (value === filter.episode) {
-      setFilter({ ...filter, episode: null });
+      setFilter({ ...filter, episode: '' });
     } else {
       setFilter({ ...filter, episode: value });
     }

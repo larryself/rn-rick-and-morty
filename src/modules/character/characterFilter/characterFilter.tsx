@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
+import { useCharacterFilter } from 'src/graphql/client/characterFilter';
 import {
   useGetCharactersNameQuery,
   useGetCharactersSpeciesQuery,
 } from 'src/graphql/generated/graphql';
-import { useActions } from 'src/store/hooks/useAction';
-import { useSelector } from 'src/store/hooks/useSelector';
 import { useNavigation } from 'src/navigation/routes';
 import { HeaderFilter, ButtonOval, Radio, Search, ButtonClear } from 'src/ui';
 import { getValues } from 'src/utils/getValues';
 import { Container, Inner } from './style';
 
 export const CharacterFilter = () => {
-  const characterFilter = useSelector(state => state.character);
-  const { applyCharacter, clearCharacter } = useActions();
-  const [valueName, setValueName] = useState(characterFilter.name || '');
-  const [valueSpecies, setValueSpecies] = useState(
-    characterFilter.species || ''
-  );
-  const [filter, setFilter] = useState(characterFilter);
+  const {
+    filter: { name, species, status, gender },
+    clearFilter,
+    editFilter,
+  } = useCharacterFilter();
+  const [valueName, setValueName] = useState(name);
+  const [valueSpecies, setValueSpecies] = useState(species);
+  const [filter, setFilter] = useState({ name, status, species, gender });
   const isEmpty = Object.values(filter).join('');
   const nameQuery = useGetCharactersNameQuery({
     variables: { name: valueName },
@@ -27,24 +27,26 @@ export const CharacterFilter = () => {
   });
   const { goBack } = useNavigation();
   const handleApply = () => {
-    applyCharacter(filter);
+    editFilter(filter);
     goBack();
   };
   const handleClear = () => {
-    clearCharacter();
-    goBack();
+    setFilter({ name: '', gender: '', species: '', status: '' });
+    clearFilter();
   };
   const handleSearch = (value: string) => {
     if (value === filter.name) {
-      setFilter({ ...filter, name: null });
+      setValueName('');
+      setFilter({ ...filter, name: '' });
     } else {
+      setValueName(value);
       setFilter({ ...filter, name: value });
     }
   };
 
   const handleStatus = (value: string) => {
     if (value === filter.status) {
-      setFilter({ ...filter, status: null });
+      setFilter({ ...filter, status: '' });
     } else {
       setFilter({ ...filter, status: value });
     }
@@ -52,15 +54,17 @@ export const CharacterFilter = () => {
 
   const handleGender = (value: string) => {
     if (value === filter.gender) {
-      setFilter({ ...filter, gender: null });
+      setFilter({ ...filter, gender: '' });
     } else {
       setFilter({ ...filter, gender: value });
     }
   };
   const handleSpecies = (value: string) => {
     if (value === filter.species) {
-      setFilter({ ...filter, species: null });
+      setValueSpecies('');
+      setFilter({ ...filter, species: '' });
     } else {
+      setValueSpecies(value);
       setFilter({ ...filter, species: value });
     }
   };

@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import { useRoute } from '@react-navigation/native';
 import { useGetLocationQuery } from 'src/graphql/generated/graphql';
-import { Routes, useNavigation } from 'src/navigation/routes';
-import { LocationTabScreenProps } from 'src/navigation/types';
+import { useNavigation } from 'src/navigation/routes';
+import { useRoute } from 'src/navigation/types';
 import { CharacterCard, Loader, DetailContainer } from 'src/ui';
 import { Wrap } from './style';
 
@@ -10,7 +9,7 @@ export const LocationDetail = () => {
   const { setOptions } = useNavigation();
   const {
     params: { title, id },
-  } = useRoute<LocationTabScreenProps<Routes.LocationDetail>['route']>();
+  } = useRoute();
   const { data, loading } = useGetLocationQuery({
     variables: { id },
   });

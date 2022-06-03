@@ -1,21 +1,22 @@
 import React from 'react';
 import { FlatList } from 'react-native';
+import { useCharacterFilter } from 'src/graphql/client/characterFilter';
 import {
   CharactersFragment,
   useGetCharactersQuery,
 } from 'src/graphql/generated/graphql';
-import { useSelector } from 'src/store/hooks/useSelector';
 import { CharacterCard, Loader, Wrapper } from 'src/ui';
+
 export const CharacterScreen = () => {
-  const { species, status, gender, name } = useSelector(
-    state => state.character
-  );
+  const {
+    filter: { name, status, gender, species },
+  } = useCharacterFilter();
   const { data, loading, fetchMore } = useGetCharactersQuery({
     variables: {
-      name: name || '',
-      status: status || '',
-      gender: gender || '',
-      species: species || '',
+      name,
+      status,
+      gender,
+      species,
       page: 1,
     },
   });
@@ -44,7 +45,7 @@ export const CharacterScreen = () => {
         onEndReachedThreshold={2}
         initialNumToRender={20}
         maxToRenderPerBatch={20}
-        updateCellsBatchingPeriod={20 / 4}
+        ListFooterComponent={page ? <Loader /> : null}
       />
     </Wrapper>
   );

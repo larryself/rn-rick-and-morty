@@ -1,25 +1,26 @@
 import React from 'react';
 import { FlatList } from 'react-native';
+import { useLocationFilter } from 'src/graphql/client/locationFilter';
 import {
   LocationsFragment,
   useGetLocationsQuery,
 } from 'src/graphql/generated/graphql';
-import { useSelector } from 'src/store/hooks/useSelector';
 import { LocationCard, Loader, Wrapper } from 'src/ui';
 
 export const LocationScreen = () => {
-  const { name, type, dimension } = useSelector(state => state.location);
+  const {
+    filter: { name, type, dimension },
+  } = useLocationFilter();
   const { data, loading, fetchMore } = useGetLocationsQuery({
     variables: {
-      name: name || '',
-      type: type || '',
-      dimension: dimension || '',
+      name,
+      type,
+      dimension,
       page: 1,
     },
   });
   const locations = data?.locations?.results;
   const page = data?.locations?.info?.next;
-
   const loadLocation = async () => {
     await fetchMore({
       variables: { page },
@@ -43,7 +44,7 @@ export const LocationScreen = () => {
         keyExtractor={item => `${item.id}`}
         onEndReached={page ? loadLocation : null}
         onEndReachedThreshold={2}
-        initialNumToRender={15}
+        initialNumToRender={20}
         maxToRenderPerBatch={20}
         ListFooterComponent={page ? <Loader /> : null}
       />

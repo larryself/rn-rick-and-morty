@@ -1,16 +1,24 @@
 import React from 'react';
 import { FlatList } from 'react-native';
+import { useEpisodeFilter } from 'src/graphql/client/episodeFilter';
+
 import {
   EpisodesFragment,
   useGetEpisodesQuery,
 } from 'src/graphql/generated/graphql';
-import { useSelector } from 'src/store/hooks/useSelector';
+
 import { EpisodeCard, Wrapper, Loader, Line } from 'src/ui';
 
 export const EpisodeScreen = () => {
-  const { name, episode } = useSelector(state => state.episode);
+  const {
+    filter: { name, episode },
+  } = useEpisodeFilter();
   const { data, loading, fetchMore } = useGetEpisodesQuery({
-    variables: { name: name || '', episode: episode || '', page: 1 },
+    variables: {
+      name,
+      episode,
+      page: 1,
+    },
   });
   const episodes = data?.episodes.results;
   const page = data?.episodes.info.next;
