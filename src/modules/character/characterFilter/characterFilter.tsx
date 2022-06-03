@@ -6,7 +6,7 @@ import {
 } from 'src/graphql/generated/graphql';
 import { useNavigation } from 'src/navigation/routes';
 import { HeaderFilter, ButtonOval, Radio, Search, ButtonClear } from 'src/ui';
-import { getValues } from 'src/utils/getValues';
+import { getValues, fields } from 'src/utils';
 import { Container, Inner } from './style';
 
 export const CharacterFilter = () => {
@@ -97,13 +97,13 @@ export const CharacterFilter = () => {
           setValue={setValueSpecies}
         />
         <Radio
-          options={['Alive', 'Dead', 'Unknown']}
+          options={fields.Status}
           title={'Status'}
           selected={filter.status}
           onChangeSelect={handleStatus}
         />
         <Radio
-          options={['Female', 'Male', 'Genderless', 'Unknown']}
+          options={fields.Gender}
           title={'Gender'}
           selected={filter.gender}
           onChangeSelect={handleGender}

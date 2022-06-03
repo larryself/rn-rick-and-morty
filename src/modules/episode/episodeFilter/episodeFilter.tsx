@@ -3,7 +3,7 @@ import { useEpisodeFilter } from 'src/graphql/client/episodeFilter';
 import { useGetEpisodesNameQuery } from 'src/graphql/generated/graphql';
 import { useNavigation } from 'src/navigation/routes';
 import { ButtonOval, Search, Select, HeaderFilter, ButtonClear } from 'src/ui';
-import { getValues } from 'src/utils/getValues';
+import { fields, getValues } from 'src/utils';
 import { Container } from './style';
 
 export const EpisodeFilter = () => {
@@ -69,7 +69,7 @@ export const EpisodeFilter = () => {
         guide={'Select one'}
         onSelect={seasonSelect}
         selected={filter.episode}
-        types={['S01', 'S02', 'S03', 'S04', 'S05']}
+        types={fields.Season}
       />
     </Container>
   );

@@ -7,7 +7,7 @@ import {
 } from 'src/graphql/generated/graphql';
 import { useNavigation } from 'src/navigation/routes';
 import { HeaderFilter, ButtonOval, Search, ButtonClear } from 'src/ui';
-import { getValues } from 'src/utils/getValues';
+import { getValues } from 'src/utils';
 import { Container } from './style';
 
 export const LocationFilter = () => {
