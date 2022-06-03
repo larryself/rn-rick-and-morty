@@ -19,7 +19,6 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  State: any;
   Upload: any;
 };
 
@@ -43,14 +42,6 @@ export type Character = {
   type: Maybe<Scalars['String']>;
 };
 
-export type CharacterFilter = {
-  __typename?: 'CharacterFilter';
-  gender: Maybe<Scalars['String']>;
-  name: Maybe<Scalars['String']>;
-  species: Maybe<Scalars['String']>;
-  status: Maybe<Scalars['String']>;
-};
-
 export type Characters = {
   __typename?: 'Characters';
   info: Maybe<Info>;
@@ -64,12 +55,6 @@ export type Episode = {
   created: Maybe<Scalars['String']>;
   episode: Maybe<Scalars['String']>;
   id: Maybe<Scalars['ID']>;
-  name: Maybe<Scalars['String']>;
-};
-
-export type EpisodeFilter = {
-  __typename?: 'EpisodeFilter';
-  episode: Maybe<Scalars['String']>;
   name: Maybe<Scalars['String']>;
 };
 
@@ -98,13 +83,6 @@ export type FilterLocation = {
   type: InputMaybe<Scalars['String']>;
 };
 
-export type Filters = {
-  __typename?: 'Filters';
-  characterFilter: Maybe<CharacterFilter>;
-  episodeFilter: Maybe<EpisodeFilter>;
-  locationFilter: Maybe<LocationFilter>;
-};
-
 export type Info = {
   __typename?: 'Info';
   count: Maybe<Scalars['Int']>;
@@ -123,57 +101,21 @@ export type Location = {
   type: Maybe<Scalars['String']>;
 };
 
-export type LocationFilter = {
-  __typename?: 'LocationFilter';
-  dimension: Maybe<Scalars['String']>;
-  name: Maybe<Scalars['String']>;
-  type: Maybe<Scalars['String']>;
-};
-
 export type Locations = {
   __typename?: 'Locations';
   info: Maybe<Info>;
   results: Maybe<Array<Maybe<Location>>>;
 };
 
-export type Mutation = {
-  __typename?: 'Mutation';
-  characterFilter: Maybe<Scalars['String']>;
-  episodeFilter: Maybe<Scalars['String']>;
-  locationFilter: Maybe<Scalars['String']>;
-};
-
-export type MutationCharacterFilterArgs = {
-  gender: InputMaybe<Scalars['String']>;
-  name: InputMaybe<Scalars['String']>;
-  species: InputMaybe<Scalars['String']>;
-  status: InputMaybe<Scalars['String']>;
-};
-
-export type MutationEpisodeFilterArgs = {
-  episode: InputMaybe<Scalars['String']>;
-  name: InputMaybe<Scalars['String']>;
-};
-
-export type MutationLocationFilterArgs = {
-  dimension: InputMaybe<Scalars['String']>;
-  name: InputMaybe<Scalars['String']>;
-  type: InputMaybe<Scalars['String']>;
-};
-
 export type Query = {
   __typename?: 'Query';
   character: Maybe<Character>;
-  characterFilter: Maybe<CharacterFilter>;
   characters: Maybe<Characters>;
   charactersByIds: Maybe<Array<Maybe<Character>>>;
   episode: Maybe<Episode>;
-  episodeFilter: Maybe<EpisodeFilter>;
   episodes: Maybe<Episodes>;
   episodesByIds: Maybe<Array<Maybe<Episode>>>;
-  filters: Maybe<Filters>;
   location: Maybe<Location>;
-  locationFilter: Maybe<LocationFilter>;
   locations: Maybe<Locations>;
   locationsByIds: Maybe<Array<Maybe<Location>>>;
 };
@@ -352,120 +294,6 @@ export type GetEpisodesNameQuery = {
   };
 };
 
-export type CharacterFilterFragment = {
-  __typename?: 'CharacterFilter';
-  name: string;
-  status: string;
-  gender: string;
-  species: string;
-};
-
-export type LocationFilterFragment = {
-  __typename?: 'LocationFilter';
-  name: string;
-  type: string;
-  dimension: string;
-};
-
-export type EpisodeFilterFragment = {
-  __typename?: 'EpisodeFilter';
-  name: string;
-  episode: string;
-};
-
-export type GetFilterQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetFilterQuery = {
-  __typename?: 'Query';
-  characterFilter: {
-    __typename?: 'CharacterFilter';
-    name: string;
-    status: string;
-    gender: string;
-    species: string;
-  };
-  locationFilter: {
-    __typename?: 'LocationFilter';
-    name: string;
-    type: string;
-    dimension: string;
-  };
-  episodeFilter: {
-    __typename?: 'EpisodeFilter';
-    name: string;
-    episode: string;
-  };
-};
-
-export type GetFilterCharactersQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetFilterCharactersQuery = {
-  __typename?: 'Query';
-  characterFilter: {
-    __typename?: 'CharacterFilter';
-    name: string;
-    status: string;
-    gender: string;
-    species: string;
-  };
-};
-
-export type GetFilterLocationsQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetFilterLocationsQuery = {
-  __typename?: 'Query';
-  locationFilter: {
-    __typename?: 'LocationFilter';
-    name: string;
-    type: string;
-    dimension: string;
-  };
-};
-
-export type GetFilterEpisodeQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetFilterEpisodeQuery = {
-  __typename?: 'Query';
-  episodeFilter: {
-    __typename?: 'EpisodeFilter';
-    name: string;
-    episode: string;
-  };
-};
-
-export type CharacterFilterMutationVariables = Exact<{
-  name: Scalars['String'];
-  species: Scalars['String'];
-  gender: Scalars['String'];
-  status: Scalars['String'];
-}>;
-
-export type CharacterFilterMutation = {
-  __typename?: 'Mutation';
-  characterFilter: string;
-};
-
-export type EpisodeFilterMutationVariables = Exact<{
-  name: InputMaybe<Scalars['String']>;
-  episode: InputMaybe<Scalars['String']>;
-}>;
-
-export type EpisodeFilterMutation = {
-  __typename?: 'Mutation';
-  episodeFilter: string;
-};
-
-export type LocationFilterMutationVariables = Exact<{
-  name: InputMaybe<Scalars['String']>;
-  type: InputMaybe<Scalars['String']>;
-  dimension: InputMaybe<Scalars['String']>;
-}>;
-
-export type LocationFilterMutation = {
-  __typename?: 'Mutation';
-  locationFilter: string;
-};
-
 export type CharactersFragment = {
   __typename?: 'Character';
   id: string;
@@ -583,27 +411,6 @@ export type GetLocationsDimensionQuery = {
   };
 };
 
-export const CharacterFilterFragmentDoc = gql`
-  fragment characterFilter on CharacterFilter {
-    name
-    status
-    gender
-    species
-  }
-`;
-export const LocationFilterFragmentDoc = gql`
-  fragment locationFilter on LocationFilter {
-    name
-    type
-    dimension
-  }
-`;
-export const EpisodeFilterFragmentDoc = gql`
-  fragment episodeFilter on EpisodeFilter {
-    name
-    episode
-  }
-`;
 export const InfoFragmentDoc = gql`
   fragment info on Info {
     pages
@@ -1104,407 +911,6 @@ export type GetEpisodesNameLazyQueryHookResult = ReturnType<
 export type GetEpisodesNameQueryResult = Apollo.QueryResult<
   GetEpisodesNameQuery,
   GetEpisodesNameQueryVariables
->;
-export const GetFilterDocument = gql`
-  query getFilter {
-    characterFilter @client {
-      name
-      status
-      gender
-      species
-    }
-    locationFilter @client {
-      name
-      type
-      dimension
-    }
-    episodeFilter @client {
-      name
-      episode
-    }
-  }
-`;
-
-/**
- * __useGetFilterQuery__
- *
- * To run a query within a React component, call `useGetFilterQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetFilterQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetFilterQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetFilterQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetFilterQuery, GetFilterQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetFilterQuery, GetFilterQueryVariables>(
-    GetFilterDocument,
-    options
-  );
-}
-export function useGetFilterLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetFilterQuery,
-    GetFilterQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetFilterQuery, GetFilterQueryVariables>(
-    GetFilterDocument,
-    options
-  );
-}
-export type GetFilterQueryHookResult = ReturnType<typeof useGetFilterQuery>;
-export type GetFilterLazyQueryHookResult = ReturnType<
-  typeof useGetFilterLazyQuery
->;
-export type GetFilterQueryResult = Apollo.QueryResult<
-  GetFilterQuery,
-  GetFilterQueryVariables
->;
-export const GetFilterCharactersDocument = gql`
-  query getFilterCharacters {
-    characterFilter {
-      name
-      status
-      gender
-      species
-    }
-  }
-`;
-
-/**
- * __useGetFilterCharactersQuery__
- *
- * To run a query within a React component, call `useGetFilterCharactersQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetFilterCharactersQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetFilterCharactersQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetFilterCharactersQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetFilterCharactersQuery,
-    GetFilterCharactersQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    GetFilterCharactersQuery,
-    GetFilterCharactersQueryVariables
-  >(GetFilterCharactersDocument, options);
-}
-export function useGetFilterCharactersLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetFilterCharactersQuery,
-    GetFilterCharactersQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    GetFilterCharactersQuery,
-    GetFilterCharactersQueryVariables
-  >(GetFilterCharactersDocument, options);
-}
-export type GetFilterCharactersQueryHookResult = ReturnType<
-  typeof useGetFilterCharactersQuery
->;
-export type GetFilterCharactersLazyQueryHookResult = ReturnType<
-  typeof useGetFilterCharactersLazyQuery
->;
-export type GetFilterCharactersQueryResult = Apollo.QueryResult<
-  GetFilterCharactersQuery,
-  GetFilterCharactersQueryVariables
->;
-export const GetFilterLocationsDocument = gql`
-  query getFilterLocations {
-    locationFilter @client {
-      name
-      type
-      dimension
-    }
-  }
-`;
-
-/**
- * __useGetFilterLocationsQuery__
- *
- * To run a query within a React component, call `useGetFilterLocationsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetFilterLocationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetFilterLocationsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetFilterLocationsQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetFilterLocationsQuery,
-    GetFilterLocationsQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    GetFilterLocationsQuery,
-    GetFilterLocationsQueryVariables
-  >(GetFilterLocationsDocument, options);
-}
-export function useGetFilterLocationsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetFilterLocationsQuery,
-    GetFilterLocationsQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    GetFilterLocationsQuery,
-    GetFilterLocationsQueryVariables
-  >(GetFilterLocationsDocument, options);
-}
-export type GetFilterLocationsQueryHookResult = ReturnType<
-  typeof useGetFilterLocationsQuery
->;
-export type GetFilterLocationsLazyQueryHookResult = ReturnType<
-  typeof useGetFilterLocationsLazyQuery
->;
-export type GetFilterLocationsQueryResult = Apollo.QueryResult<
-  GetFilterLocationsQuery,
-  GetFilterLocationsQueryVariables
->;
-export const GetFilterEpisodeDocument = gql`
-  query getFilterEpisode {
-    episodeFilter {
-      name
-      episode
-    }
-  }
-`;
-
-/**
- * __useGetFilterEpisodeQuery__
- *
- * To run a query within a React component, call `useGetFilterEpisodeQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetFilterEpisodeQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetFilterEpisodeQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetFilterEpisodeQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetFilterEpisodeQuery,
-    GetFilterEpisodeQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetFilterEpisodeQuery, GetFilterEpisodeQueryVariables>(
-    GetFilterEpisodeDocument,
-    options
-  );
-}
-export function useGetFilterEpisodeLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetFilterEpisodeQuery,
-    GetFilterEpisodeQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    GetFilterEpisodeQuery,
-    GetFilterEpisodeQueryVariables
-  >(GetFilterEpisodeDocument, options);
-}
-export type GetFilterEpisodeQueryHookResult = ReturnType<
-  typeof useGetFilterEpisodeQuery
->;
-export type GetFilterEpisodeLazyQueryHookResult = ReturnType<
-  typeof useGetFilterEpisodeLazyQuery
->;
-export type GetFilterEpisodeQueryResult = Apollo.QueryResult<
-  GetFilterEpisodeQuery,
-  GetFilterEpisodeQueryVariables
->;
-export const CharacterFilterDocument = gql`
-  mutation characterFilter(
-    $name: String!
-    $species: String!
-    $gender: String!
-    $status: String!
-  ) {
-    characterFilter(
-      name: $name
-      species: $species
-      gender: $gender
-      status: $status
-    ) @client
-  }
-`;
-export type CharacterFilterMutationFn = Apollo.MutationFunction<
-  CharacterFilterMutation,
-  CharacterFilterMutationVariables
->;
-
-/**
- * __useCharacterFilterMutation__
- *
- * To run a mutation, you first call `useCharacterFilterMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCharacterFilterMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [characterFilterMutation, { data, loading, error }] = useCharacterFilterMutation({
- *   variables: {
- *      name: // value for 'name'
- *      species: // value for 'species'
- *      gender: // value for 'gender'
- *      status: // value for 'status'
- *   },
- * });
- */
-export function useCharacterFilterMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    CharacterFilterMutation,
-    CharacterFilterMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    CharacterFilterMutation,
-    CharacterFilterMutationVariables
-  >(CharacterFilterDocument, options);
-}
-export type CharacterFilterMutationHookResult = ReturnType<
-  typeof useCharacterFilterMutation
->;
-export type CharacterFilterMutationResult =
-  Apollo.MutationResult<CharacterFilterMutation>;
-export type CharacterFilterMutationOptions = Apollo.BaseMutationOptions<
-  CharacterFilterMutation,
-  CharacterFilterMutationVariables
->;
-export const EpisodeFilterDocument = gql`
-  mutation episodeFilter($name: String, $episode: String) {
-    episodeFilter(name: $name, episode: $episode) @client
-  }
-`;
-export type EpisodeFilterMutationFn = Apollo.MutationFunction<
-  EpisodeFilterMutation,
-  EpisodeFilterMutationVariables
->;
-
-/**
- * __useEpisodeFilterMutation__
- *
- * To run a mutation, you first call `useEpisodeFilterMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useEpisodeFilterMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [episodeFilterMutation, { data, loading, error }] = useEpisodeFilterMutation({
- *   variables: {
- *      name: // value for 'name'
- *      episode: // value for 'episode'
- *   },
- * });
- */
-export function useEpisodeFilterMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    EpisodeFilterMutation,
-    EpisodeFilterMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    EpisodeFilterMutation,
-    EpisodeFilterMutationVariables
-  >(EpisodeFilterDocument, options);
-}
-export type EpisodeFilterMutationHookResult = ReturnType<
-  typeof useEpisodeFilterMutation
->;
-export type EpisodeFilterMutationResult =
-  Apollo.MutationResult<EpisodeFilterMutation>;
-export type EpisodeFilterMutationOptions = Apollo.BaseMutationOptions<
-  EpisodeFilterMutation,
-  EpisodeFilterMutationVariables
->;
-export const LocationFilterDocument = gql`
-  mutation locationFilter($name: String, $type: String, $dimension: String) {
-    locationFilter(name: $name, type: $type, dimension: $dimension) @client
-  }
-`;
-export type LocationFilterMutationFn = Apollo.MutationFunction<
-  LocationFilterMutation,
-  LocationFilterMutationVariables
->;
-
-/**
- * __useLocationFilterMutation__
- *
- * To run a mutation, you first call `useLocationFilterMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useLocationFilterMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [locationFilterMutation, { data, loading, error }] = useLocationFilterMutation({
- *   variables: {
- *      name: // value for 'name'
- *      type: // value for 'type'
- *      dimension: // value for 'dimension'
- *   },
- * });
- */
-export function useLocationFilterMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    LocationFilterMutation,
-    LocationFilterMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    LocationFilterMutation,
-    LocationFilterMutationVariables
-  >(LocationFilterDocument, options);
-}
-export type LocationFilterMutationHookResult = ReturnType<
-  typeof useLocationFilterMutation
->;
-export type LocationFilterMutationResult =
-  Apollo.MutationResult<LocationFilterMutation>;
-export type LocationFilterMutationOptions = Apollo.BaseMutationOptions<
-  LocationFilterMutation,
-  LocationFilterMutationVariables
 >;
 export const GetLocationsDocument = gql`
   query getLocations(
