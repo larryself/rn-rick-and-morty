@@ -26,7 +26,8 @@ export const ModalMenu: FC<IModalMenu> = ({
       backdropOpacity={0.1}
       useNativeDriver
       hideModalContentWhileAnimating
-      avoidKeyboard>
+      avoidKeyboard
+      swipeDirection={'down'}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'height' : 'position'}>
         <Container>{children}</Container>

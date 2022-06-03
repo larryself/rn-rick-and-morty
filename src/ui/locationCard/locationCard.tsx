@@ -6,23 +6,24 @@ import { Container, Name, Type } from './style';
 
 const { width } = Dimensions.get('screen');
 
-export const LocationCard: FC<LocationsFragment> = ({ type, name, id }) => {
-  const { navigate } = useNavigation();
-
-  return (
-    <Container
-      width={width}
-      onPress={() =>
-        navigate(Routes.LocationStack, {
-          screen: Routes.LocationDetail,
-          params: {
-            id,
-            title: name,
-          },
-        })
-      }>
-      <Type numberOfLines={1}>{type}</Type>
-      <Name numberOfLines={2}>{name}</Name>
-    </Container>
-  );
-};
+export const LocationCard: FC<LocationsFragment> = React.memo(
+  ({ type, name, id }) => {
+    const { navigate } = useNavigation();
+    return (
+      <Container
+        width={width}
+        onPress={() =>
+          navigate(Routes.LocationStack, {
+            screen: Routes.LocationDetail,
+            params: {
+              id,
+              title: name,
+            },
+          })
+        }>
+        <Type numberOfLines={1}>{type}</Type>
+        <Name numberOfLines={2}>{name}</Name>
+      </Container>
+    );
+  }
+);

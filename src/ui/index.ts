@@ -5,7 +5,6 @@ export { ButtonOval } from 'src/ui/buttonOval/buttonOval';
 export { ButtonClear } from './buttonClear/buttonClear';
 export { CharacterCard } from './characterCard/characterCard';
 export { DetailContainer } from './detailWrapper/detailWrapper';
-export type { DetailContainerProps } from './detailWrapper/detailWrapper';
 export { EpisodeCard } from './episodeCard/episodeCard';
 export { Header } from './header/header';
 export { Loader } from './loader/loader';

@@ -1,39 +1,35 @@
 import React, { FC } from 'react';
 import { SafeAreaView } from 'react-native';
+import { useEpisodeFilter } from 'src/graphql/client/episodeFilter';
+import { useLocationFilter } from 'src/graphql/client/locationFilter';
+import { useCharacterFilter } from 'src/graphql/client/characterFilter';
 import { useNavigation } from 'src/navigation/routes';
-import { useSelector } from 'src/store/hooks/useSelector';
-
 import { Button, ButtonText, Container, Title, Circle } from './style';
 
 export interface HeaderProps {
   title: string;
-  stack: string;
   filter: string;
 }
 
-export const Header: FC<HeaderProps> = ({ title, stack, filter }) => {
+export const Header: FC<HeaderProps> = ({ title, filter }) => {
   const { navigate } = useNavigation();
-
-  const { character, episode, location } = useSelector(state => state);
+  const characterFilter = useCharacterFilter();
+  const episodeFilter = useEpisodeFilter();
+  const locationFilter = useLocationFilter();
   let isEmpty;
   if (title === 'Character') {
-    isEmpty = Object.values(character).join('');
+    isEmpty = Object.values(characterFilter.filter).join('');
   }
   if (title === 'Location') {
-    isEmpty = Object.values(location).join('');
+    isEmpty = Object.values(locationFilter.filter).join('');
   }
   if (title === 'Episode') {
-    isEmpty = Object.values(episode).join('');
+    isEmpty = Object.values(episodeFilter.filter).join('');
   }
   return (
     <SafeAreaView>
       <Container>
-        <Button
-          onPress={() =>
-            navigate(stack, {
-              screen: filter,
-            })
-          }>
+        <Button onPress={() => navigate(filter)}>
           {isEmpty ? <Circle /> : null}
           <ButtonText>Filter</ButtonText>
         </Button>

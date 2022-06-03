@@ -34,7 +34,7 @@ export const Title = styled(Text)`
   color: ${COLORS.DARK};
 `;
 
-export const Circle = styled(View)<{ selected: string | null }>`
+export const Circle = styled(View)<{ selected: string }>`
   width: 22px;
   height: 22px;
   border: 1.5px solid;
@@ -45,7 +45,7 @@ export const Circle = styled(View)<{ selected: string | null }>`
   margin-right: 13px;
 `;
 
-export const CircleChecked = styled(View)<{ selected: string | null }>`
+export const CircleChecked = styled(View)<{ selected: string }>`
   width: 14px;
   height: 14px;
   border-radius: 7px;

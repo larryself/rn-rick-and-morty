@@ -14,7 +14,7 @@ import {
 export interface RadioProps {
   options: string[];
   title: string;
-  selected: string | null;
+  selected: string;
   onChangeSelect: (item: string) => void;
 }
 

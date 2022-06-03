@@ -6,7 +6,7 @@ import { Inner, SelectItem, SelectText as Text, Title } from './style';
 export interface SelectListProps {
   title: string;
   options: string[];
-  selected: string | null;
+  selected: string;
   onChangeSelect: (item: string) => void;
 }
 
