@@ -1,6 +1,7 @@
 import Modal from 'react-native-modal';
-import { COLORS } from 'src/theme/colors';
 import styled from 'styled-components/native';
+
+import { COLORS } from 'src/theme/colors';
 
 export const StyledModal = styled(Modal)`
   margin: 0;

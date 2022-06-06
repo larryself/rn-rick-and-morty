@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
-
 import { Arrow } from 'assets/images/icons/arrow';
+
 import { useGetCharacterQuery } from 'src/graphql/generated/graphql';
 import { Routes, useNavigation } from 'src/navigation/routes';
 import { useRoute } from 'src/navigation/types';
-import { EpisodeCard, Loader, DetailContainer, Line } from 'src/ui';
+import { DetailContainer, EpisodeCard, Line, Loader } from 'src/ui';
+
 import { Container, Info, Location, SubTitle, Title, Wrap } from './style';
 
 export const CharacterDetail = () => {
@@ -67,7 +68,7 @@ export const CharacterDetail = () => {
       <Title>Episodes</Title>
       <Line />
       <Wrap>
-        {data?.character.episode.map(episode => (
+        {data?.character.episode.map((episode) => (
           <EpisodeCard key={episode.id} {...episode} />
         ))}
       </Wrap>

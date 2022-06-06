@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
+
 import { useGetLocationQuery } from 'src/graphql/generated/graphql';
 import { useNavigation } from 'src/navigation/routes';
 import { useRoute } from 'src/navigation/types';
-import { CharacterCard, Loader, DetailContainer } from 'src/ui';
+import { CharacterCard, DetailContainer, Loader } from 'src/ui';
+
 import { Wrap } from './style';
 
 export const LocationDetail = () => {
@@ -28,7 +30,7 @@ export const LocationDetail = () => {
       latterInfo={data?.location.dimension}
       subTitle={'Characters'}>
       <Wrap>
-        {data?.location.residents.map(resident => (
+        {data?.location.residents.map((resident) => (
           <CharacterCard key={resident.id} character={resident} />
         ))}
       </Wrap>

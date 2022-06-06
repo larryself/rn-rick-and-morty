@@ -7,7 +7,7 @@ type LocationFilter = {
 };
 
 export function makeLocationFilter(
-  value: Partial<LocationFilter>
+  value: Partial<LocationFilter>,
 ): LocationFilter {
   return {
     name: '',
@@ -18,8 +18,9 @@ export function makeLocationFilter(
 }
 
 export const LocationFilterVar = makeVar<LocationFilter>(
-  makeLocationFilter({})
+  makeLocationFilter({}),
 );
+
 export const useLocationFilter = () => {
   const filter = useReactiveVar(LocationFilterVar);
   const editFilter = (value: Partial<LocationFilter>) =>

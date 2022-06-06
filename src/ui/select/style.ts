@@ -38,7 +38,7 @@ export const Circle = styled(View)<{ selected: string }>`
   width: 22px;
   height: 22px;
   border: 1.5px solid;
-  border-color: ${props => (props.selected ? COLORS.INDIGO : COLORS.GRAY_4)};
+  border-color: ${(props) => (props.selected ? COLORS.INDIGO : COLORS.GRAY_4)};
   border-radius: 11px;
   align-items: center;
   justify-content: center;
@@ -49,5 +49,6 @@ export const CircleChecked = styled(View)<{ selected: string }>`
   width: 14px;
   height: 14px;
   border-radius: 7px;
-  background-color: ${props => (props.selected ? COLORS.INDIGO : COLORS.WHITE)};
+  background-color: ${(props) =>
+    props.selected ? COLORS.INDIGO : COLORS.WHITE};
 `;

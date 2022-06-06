@@ -1,15 +1,17 @@
-import { Arrow } from 'assets/images/icons/arrow';
 import React, { FC, useState } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
-import { Line, HeaderFilter, ButtonBack, ModalMenu, SearchInput } from 'src/ui';
+import { Arrow } from 'assets/images/icons/arrow';
+
+import { ButtonBack, HeaderFilter, Line, ModalMenu, SearchInput } from 'src/ui';
+
 import {
-  Container,
+  Box,
   Circle,
   CircleChecked,
+  Container,
   Guide,
   Inner,
   Title,
-  Box,
 } from './style';
 
 interface SearchProps {
@@ -32,7 +34,7 @@ export const Search: FC<SearchProps> = ({
   value = '',
 }) => {
   const [visible, setVisible] = useState(false);
-  const renderItem = ({ item }: { item: any }) => (
+  const renderItem = ({ item }: { item: string }) => (
     <TouchableOpacity
       style={{ padding: 10 }}
       onPress={() => {
@@ -66,7 +68,7 @@ export const Search: FC<SearchProps> = ({
             data={list}
             numColumns={1}
             renderItem={renderItem}
-            keyExtractor={item => item}
+            keyExtractor={(item) => item}
             showsVerticalScrollIndicator={false}
           />
         </Box>

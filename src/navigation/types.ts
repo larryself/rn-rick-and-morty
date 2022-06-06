@@ -1,6 +1,7 @@
 import { useRoute } from '@react-navigation/native';
-import { Routes } from 'src/navigation/routes';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+
+import { Routes } from 'src/navigation/routes';
 
 type Params = {
   id: string;

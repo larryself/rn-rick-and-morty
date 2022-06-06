@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { useLocationFilter } from 'src/graphql/client/locationFilter';
 import {
   useGetLocationsDimensionQuery,
@@ -6,8 +7,9 @@ import {
   useGetLocationsTypeQuery,
 } from 'src/graphql/generated/graphql';
 import { useNavigation } from 'src/navigation/routes';
-import { HeaderFilter, ButtonOval, Search, ButtonClear } from 'src/ui';
+import { ButtonClear, ButtonOval, HeaderFilter, Search } from 'src/ui';
 import { getValues } from 'src/utils';
+
 import { Container } from './style';
 
 export const LocationFilter = () => {
@@ -36,10 +38,12 @@ export const LocationFilter = () => {
     editFilter(filter);
     goBack();
   };
+
   const handleClear = () => {
     setFilter({ name: '', type: '', dimension: '' });
     clearFilter();
   };
+
   const handleType = (value: string) => {
     if (value === filter.type) {
       setValueType('');
@@ -69,6 +73,7 @@ export const LocationFilter = () => {
       setFilter({ ...filter, name: value });
     }
   };
+
   return (
     <Container>
       <HeaderFilter

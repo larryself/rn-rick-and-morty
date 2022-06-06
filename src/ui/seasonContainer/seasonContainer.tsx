@@ -1,5 +1,7 @@
 import React, { FC, ReactNode } from 'react';
+
 import { Line } from 'src/ui';
+
 import { Container, Inner, Season, Wrap } from './style';
 
 export interface SeasonContainerProps {

@@ -1,13 +1,12 @@
 import React from 'react';
 import { FlatList } from 'react-native';
-import { useEpisodeFilter } from 'src/graphql/client/episodeFilter';
 
+import { useEpisodeFilter } from 'src/graphql/client/episodeFilter';
 import {
   EpisodesFragment,
   useGetEpisodesQuery,
 } from 'src/graphql/generated/graphql';
-
-import { EpisodeCard, Wrapper, Loader, Line } from 'src/ui';
+import { EpisodeCard, Line, Loader, Wrapper } from 'src/ui';
 
 export const EpisodeScreen = () => {
   const {
@@ -33,6 +32,10 @@ export const EpisodeScreen = () => {
     <EpisodeCard {...item} key={item.id} />
   );
 
+  const itemSeparator = () => {
+    return <Line />;
+  };
+
   if (loading) {
     return <Loader />;
   }
@@ -44,12 +47,12 @@ export const EpisodeScreen = () => {
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
         numColumns={1}
-        ItemSeparatorComponent={() => <Line />}
-        keyExtractor={item => item.id}
+        ItemSeparatorComponent={itemSeparator}
+        keyExtractor={(item) => item.id}
         onEndReached={page ? loadEpisodes : null}
         onEndReachedThreshold={2}
         contentContainerStyle={{ paddingLeft: 16 }}
-        initialNumToRender={10}
+        initialNumToRender={20}
         maxToRenderPerBatch={20}
         ListFooterComponent={page ? <Loader /> : null}
       />

@@ -1,9 +1,11 @@
+import React, { FC } from 'react';
 import { Dictation } from 'assets/images/icons/dictation';
 import { Search } from 'assets/images/icons/search';
-import React, { FC } from 'react';
+
 import { COLORS } from 'src/theme/colors';
-import { Container, Inner, Input } from './style';
 import { Line } from 'src/ui';
+
+import { Container, Inner, Input } from './style';
 
 interface SearchInputProps {
   value: string;
@@ -21,7 +23,7 @@ export const SearchInput: FC<SearchInputProps> = ({ value, setValue }) => {
             keyboardType={'default'}
             placeholderTextColor={COLORS.text}
             value={value}
-            onChange={item => setValue(item.nativeEvent.text)}
+            onChange={(item) => setValue(item.nativeEvent.text)}
           />
           <Dictation />
         </Container>

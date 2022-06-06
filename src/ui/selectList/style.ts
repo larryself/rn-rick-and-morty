@@ -1,5 +1,6 @@
 import { Text, TouchableOpacity, View } from 'react-native';
 import styled from 'styled-components/native';
+
 import { COLORS } from 'src/theme/colors';
 
 export const Inner = styled(View)`
@@ -18,7 +19,7 @@ export const Title = styled(Text)`
 
 export const SelectItem = styled(TouchableOpacity)<{ selected: boolean }>`
   padding: 11px 0;
-  ${props => props.selected && 'opacity: .2'};
+  ${(props) => props.selected && 'opacity: .2'};
 `;
 
 export const SelectText = styled(Text)`

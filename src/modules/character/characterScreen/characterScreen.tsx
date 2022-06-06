@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlatList } from 'react-native';
+
 import { useCharacterFilter } from 'src/graphql/client/characterFilter';
 import {
   CharactersFragment,
@@ -22,6 +23,7 @@ export const CharacterScreen = () => {
   });
   const characters = data?.characters.results;
   const page = data?.characters.info.next;
+
   const loadCharacters = async () => {
     await fetchMore({
       variables: { page },
@@ -30,9 +32,11 @@ export const CharacterScreen = () => {
   const renderItem = ({ item }: { item: CharactersFragment }) => (
     <CharacterCard character={item} key={item.id} />
   );
+
   if (loading) {
     return <Loader />;
   }
+
   return (
     <Wrapper>
       <FlatList
@@ -40,7 +44,7 @@ export const CharacterScreen = () => {
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
         onEndReached={page ? loadCharacters : null}
         onEndReachedThreshold={2}
         initialNumToRender={20}

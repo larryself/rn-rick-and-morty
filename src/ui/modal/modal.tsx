@@ -1,6 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import { KeyboardAvoidingView, Platform } from 'react-native';
-import { StyledModal, Container } from './style';
+
+import { Container, StyledModal } from './style';
 
 interface IModalMenu {
   showModal: boolean;

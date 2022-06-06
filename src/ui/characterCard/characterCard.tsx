@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
 import { Dimensions } from 'react-native';
+
 import { CharactersFragment } from 'src/graphql/generated/graphql';
 import { Routes, useNavigation } from 'src/navigation/routes';
+
 import { Container, Description, Img, Name, Status } from './style';
 
 const { width } = Dimensions.get('screen');
@@ -12,6 +14,7 @@ type CharacterProps = {
 export const CharacterCard: FC<CharacterProps> = React.memo(({ character }) => {
   const { id, name, image, status } = character;
   const { navigate } = useNavigation();
+
   return (
     <Container
       width={width}

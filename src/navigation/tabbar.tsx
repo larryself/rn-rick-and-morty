@@ -1,11 +1,13 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Character, Episode, Location } from 'assets/images/icons/';
+
 import { CharacterScreen } from 'src/modules/character';
 import { EpisodeScreen } from 'src/modules/episode';
 import { LocationScreen } from 'src/modules/location';
 import { COLORS } from 'src/theme/colors';
 import { Header } from 'src/ui';
+
 import { Routes } from './routes';
 
 const Tab = createBottomTabNavigator();
@@ -23,8 +25,9 @@ export const TabBar = () => {
         options={{
           tabBarLabel: 'Character',
           tabBarIcon: ({ focused }) => <Character focused={focused} />,
-          header: props => {
+          header: (props) => {
             const title = 'Character';
+
             return (
               <Header
                 {...props}
@@ -41,8 +44,9 @@ export const TabBar = () => {
         options={{
           tabBarLabel: 'Location',
           tabBarIcon: ({ focused }) => <Location focused={focused} />,
-          header: props => {
+          header: (props) => {
             const title = 'Location';
+
             return (
               <Header {...props} title={title} filter={Routes.LocationFilter} />
             );
@@ -55,8 +59,9 @@ export const TabBar = () => {
         options={{
           tabBarLabel: 'Episode',
           tabBarIcon: ({ focused }) => <Episode focused={focused} />,
-          header: props => {
+          header: (props) => {
             const title = 'Episode';
+
             return (
               <Header {...props} title={title} filter={Routes.EpisodeFilter} />
             );

@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import { SafeAreaView } from 'react-native';
+
 import { ButtonInner, Container, Title } from './style';
 
 export interface HeaderProps {

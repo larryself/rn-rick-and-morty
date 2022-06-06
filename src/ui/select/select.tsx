@@ -1,8 +1,10 @@
 import React, { FC, useState } from 'react';
 import { View } from 'react-native';
 import { Arrow } from 'assets/images/icons/arrow';
-import { Line, SelectList, ModalMenu } from 'src/ui';
-import { Container, Circle, CircleChecked, Guide, Inner, Title } from './style';
+
+import { Line, ModalMenu, SelectList } from 'src/ui';
+
+import { Circle, CircleChecked, Container, Guide, Inner, Title } from './style';
 
 export interface SelectProps {
   selected: string;
@@ -20,15 +22,16 @@ export const Select: FC<SelectProps> = ({
   types,
 }) => {
   const [visible, setVisible] = useState(false);
+
   const typeSelect = (item: string) => {
     onSelect(item);
-    setVisible(state => !state);
+    setVisible((state) => !state);
   };
 
   return (
     <>
       <Line />
-      <Container onPress={() => setVisible(state => !state)}>
+      <Container onPress={() => setVisible((state) => !state)}>
         <Circle selected={selected}>
           <CircleChecked selected={selected} />
         </Circle>

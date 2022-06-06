@@ -6,7 +6,7 @@ type EpisodeFilter = {
 };
 
 export function makeEpisodeFilter(
-  value: Partial<EpisodeFilter>
+  value: Partial<EpisodeFilter>,
 ): EpisodeFilter {
   return {
     name: '',

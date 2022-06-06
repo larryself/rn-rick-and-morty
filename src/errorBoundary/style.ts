@@ -1,6 +1,7 @@
-import { SafeAreaView, View, TouchableOpacity, Text } from 'react-native';
-import { COLORS } from 'src/theme/colors';
+import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import styled from 'styled-components/native';
+
+import { COLORS } from 'src/theme/colors';
 
 export const Inner = styled(SafeAreaView)`
   flex: 1;

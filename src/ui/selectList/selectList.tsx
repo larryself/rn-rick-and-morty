@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { FlatList } from 'react-native';
+
 import { Line } from 'src/ui';
+
 import { Inner, SelectItem, SelectText as Text, Title } from './style';
 
 export interface SelectListProps {
@@ -24,6 +26,10 @@ export const SelectList: FC<SelectListProps> = ({
     </SelectItem>
   );
 
+  const itemSeparator = () => {
+    return <Line />;
+  };
+
   return (
     <Inner>
       <Title>{title}</Title>
@@ -32,8 +38,8 @@ export const SelectList: FC<SelectListProps> = ({
         data={options}
         renderItem={renderItem}
         numColumns={1}
-        keyExtractor={item => item}
-        ItemSeparatorComponent={() => <Line />}
+        keyExtractor={(item) => item}
+        ItemSeparatorComponent={itemSeparator}
         contentContainerStyle={{ paddingLeft: 18 }}
       />
       <Line />

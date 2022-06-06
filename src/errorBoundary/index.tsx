@@ -1,17 +1,23 @@
 import React, { ReactNode } from 'react';
-import { Inner, Container, Title, Button, ButtonText } from './style';
 import RNRestart from 'react-native-restart';
+
+import { Button, ButtonText, Container, Inner, Title } from './style';
 
 type Props = {
   children: ReactNode;
 };
 
-export class ErrorBoundary extends React.Component<Props> {
-  state = { hasError: false };
+type State = {
+  hasError: boolean;
+};
 
-  static getDerivedStateFromError() {
+export class ErrorBoundary extends React.Component<Props, State> {
+  public static getDerivedStateFromError(): State {
     return { hasError: true };
   }
+  state: State = {
+    hasError: false,
+  };
 
   handleButton() {
     RNRestart.Restart();

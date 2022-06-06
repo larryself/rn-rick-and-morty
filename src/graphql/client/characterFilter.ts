@@ -6,8 +6,9 @@ type CharacterFilter = {
   status: string;
   species: string;
 };
+
 export function makeCharacterFilter(
-  value: Partial<CharacterFilter>
+  value: Partial<CharacterFilter>,
 ): CharacterFilter {
   return {
     name: '',
@@ -19,7 +20,7 @@ export function makeCharacterFilter(
 }
 
 export const CharacterFilterVar = makeVar<CharacterFilter>(
-  makeCharacterFilter({})
+  makeCharacterFilter({}),
 );
 
 export const useCharacterFilter = () => {

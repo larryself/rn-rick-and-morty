@@ -1,5 +1,6 @@
 import { View } from 'react-native';
 import styled from 'styled-components/native';
+
 import { COLORS } from 'src/theme/colors';
 
 export const Container = styled(View)`

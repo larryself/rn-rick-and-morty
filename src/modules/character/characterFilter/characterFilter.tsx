@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+
 import { useCharacterFilter } from 'src/graphql/client/characterFilter';
 import {
   useGetCharactersNameQuery,
   useGetCharactersSpeciesQuery,
 } from 'src/graphql/generated/graphql';
 import { useNavigation } from 'src/navigation/routes';
-import { HeaderFilter, ButtonOval, Radio, Search, ButtonClear } from 'src/ui';
-import { getValues, fields } from 'src/utils';
+import { ButtonClear, ButtonOval, HeaderFilter, Radio, Search } from 'src/ui';
+import { fields, getValues } from 'src/utils';
+
 import { Container, Inner } from './style';
 
 export const CharacterFilter = () => {
@@ -26,14 +28,17 @@ export const CharacterFilter = () => {
     variables: { species: valueSpecies },
   });
   const { goBack } = useNavigation();
+
   const handleApply = () => {
     editFilter(filter);
     goBack();
   };
+
   const handleClear = () => {
     setFilter({ name: '', gender: '', species: '', status: '' });
     clearFilter();
   };
+
   const handleSearch = (value: string) => {
     if (value === filter.name) {
       setValueName('');
@@ -59,6 +64,7 @@ export const CharacterFilter = () => {
       setFilter({ ...filter, gender: value });
     }
   };
+
   const handleSpecies = (value: string) => {
     if (value === filter.species) {
       setValueSpecies('');
@@ -68,6 +74,7 @@ export const CharacterFilter = () => {
       setFilter({ ...filter, species: value });
     }
   };
+
   return (
     <Container>
       <Inner>

@@ -4,8 +4,8 @@ import styled from 'styled-components/native';
 import { COLORS } from 'src/theme/colors';
 
 export const Container = styled(TouchableOpacity)<{ width: number }>`
-  width: ${props => props.width && props.width * 0.46 + 'px'};
-  margin: ${props => props.width && props.width * 0.02 + 'px'};
+  width: ${(props) => props.width && props.width * 0.46 + 'px'};
+  margin: ${(props) => props.width && props.width * 0.02 + 'px'};
   border: 1px solid ${COLORS.GRAY_5};
   border-radius: 8px;
   overflow: hidden;

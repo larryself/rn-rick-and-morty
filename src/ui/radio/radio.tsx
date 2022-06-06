@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
 import { FlatList } from 'react-native';
+
 import { Line } from 'src/ui';
+
 import {
-  Container,
   Circle,
   CircleChecked,
+  Container,
   Inner,
   TextInner,
   Title,
@@ -38,6 +40,10 @@ export const Radio: FC<RadioProps> = ({
     </Container>
   );
 
+  const itemSeparator = () => {
+    return <Line />;
+  };
+
   return (
     <Inner>
       <Title>{title}</Title>
@@ -46,8 +52,8 @@ export const Radio: FC<RadioProps> = ({
         data={options}
         renderItem={renderItem}
         numColumns={1}
-        keyExtractor={item => item}
-        ItemSeparatorComponent={() => <Line />}
+        keyExtractor={(item) => item}
+        ItemSeparatorComponent={itemSeparator}
         contentContainerStyle={{ paddingLeft: 18 }}
       />
       <Line />

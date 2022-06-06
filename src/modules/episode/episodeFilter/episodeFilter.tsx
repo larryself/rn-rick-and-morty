@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+
 import { useEpisodeFilter } from 'src/graphql/client/episodeFilter';
 import { useGetEpisodesNameQuery } from 'src/graphql/generated/graphql';
 import { useNavigation } from 'src/navigation/routes';
-import { ButtonOval, Search, Select, HeaderFilter, ButtonClear } from 'src/ui';
+import { ButtonClear, ButtonOval, HeaderFilter, Search, Select } from 'src/ui';
 import { fields, getValues } from 'src/utils';
+
 import { Container } from './style';
 
 export const EpisodeFilter = () => {
@@ -20,10 +22,12 @@ export const EpisodeFilter = () => {
   const isEmpty = Object.values(filter).join('');
   const episodes = data?.episodes.results;
   const { goBack } = useNavigation();
+
   const handleApply = () => {
     editFilter(filter);
     goBack();
   };
+
   const handleClear = () => {
     setFilter({ name: '', episode: '' });
     clearFilter();
@@ -38,6 +42,7 @@ export const EpisodeFilter = () => {
       setFilter({ ...filter, name: value });
     }
   };
+
   const seasonSelect = (value: string) => {
     if (value === filter.episode) {
       setFilter({ ...filter, episode: '' });
