@@ -18,7 +18,7 @@ export const Title = styled(Text)`
   font-size: 15px;
   line-height: 18px;
   letter-spacing: -0.24px;
-  color: ${COLORS.GRAY_4};
+  color: ${COLORS.GRAY_2};
   padding: 8px 16px;
 `;
 
@@ -26,7 +26,7 @@ export const Circle = styled(View)<{ selected: boolean }>`
   width: 22px;
   height: 22px;
   border-width: 1.5px;
-  border-color: ${(props) => (props.selected ? COLORS.INDIGO : COLORS.GRAY_4)};
+  border-color: ${(props) => (props.selected ? COLORS.INDIGO : COLORS.GRAY_2)};
   border-radius: 11px;
   align-items: center;
   justify-content: center;

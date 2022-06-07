@@ -26,7 +26,7 @@ export const Status = styled(Text)`
   font-size: 11px;
   line-height: 13px;
   letter-spacing: 0.07px;
-  color: ${COLORS.text};
+  color: ${COLORS.GRAY_3};
 `;
 
 export const Name = styled(Text)`

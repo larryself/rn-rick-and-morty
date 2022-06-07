@@ -46,7 +46,7 @@ export const FirstInfo = styled(Text)`
   font-size: 11px;
   line-height: 13px;
   letter-spacing: 0.07px;
-  color: ${COLORS.text};
+  color: ${COLORS.GRAY_3};
 `;
 
 export const LatterInfo = styled(Text)`
@@ -54,7 +54,7 @@ export const LatterInfo = styled(Text)`
   font-size: 13px;
   line-height: 18px;
   letter-spacing: -0.08px;
-  color: ${COLORS.text};
+  color: ${COLORS.GRAY_3};
   text-transform: uppercase;
 `;
 

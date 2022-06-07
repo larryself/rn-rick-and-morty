@@ -23,7 +23,7 @@ export const Guide = styled(Text)`
   font-size: 15px;
   line-height: 18px;
   letter-spacing: -0.24px;
-  color: ${COLORS.text};
+  color: ${COLORS.GRAY_3};
 `;
 
 export const Title = styled(Text)`
@@ -38,7 +38,7 @@ export const Circle = styled(View)<{ selected: string }>`
   width: 22px;
   height: 22px;
   border: 1.5px solid;
-  border-color: ${(props) => (props.selected ? COLORS.INDIGO : COLORS.GRAY_4)};
+  border-color: ${(props) => (props.selected ? COLORS.INDIGO : COLORS.GRAY_2)};
   border-radius: 11px;
   align-items: center;
   justify-content: center;

@@ -5,7 +5,7 @@
  * @format
  */
 
-import { getDefaultConfig } from 'metro-config';
+const { getDefaultConfig } = require('metro-config');
 
 const { resolver: defaultResolver } = getDefaultConfig.getDefaultValues();
 

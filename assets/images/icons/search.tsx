@@ -3,7 +3,7 @@ import Svg, { Path } from 'react-native-svg';
 
 import { COLORS } from 'src/theme/colors';
 
-export const Search = ({ color = COLORS.GRAY_4 }) => (
+export const Search = ({ color = COLORS.GRAY_2 }) => (
   <Svg width="14" height="14" fill="none">
     <Path
       fillRule="evenodd"

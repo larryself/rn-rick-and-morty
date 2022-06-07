@@ -3,7 +3,7 @@ import Svg, { Path } from 'react-native-svg';
 
 import { COLORS } from 'src/theme/colors';
 
-export const Dictation = ({ color = COLORS.GRAY_4 }) => (
+export const Dictation = ({ color = COLORS.GRAY_2 }) => (
   <Svg width="20" height="20" fill="none">
     <Path
       fillRule="evenodd"

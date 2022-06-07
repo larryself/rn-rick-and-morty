@@ -29,7 +29,7 @@ export const Info = styled(Text)`
   font-size: 15px;
   line-height: 18px;
   letter-spacing: -0.24px;
-  color: ${COLORS.text};
+  color: ${COLORS.GRAY_3};
   margin-bottom: 11px;
 `;
 

@@ -13,7 +13,7 @@ export const Title = styled(Text)`
   font-size: 20px;
   line-height: 25px;
   letter-spacing: -0.24px;
-  color: ${COLORS.GRAY_4};
+  color: ${COLORS.GRAY_2};
   padding: 8px 16px;
 `;
 
