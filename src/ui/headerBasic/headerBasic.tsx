@@ -8,12 +8,12 @@ import { useNavigation } from 'src/navigation/routes';
 
 import { Button, ButtonText, Circle, Container, Title } from './style';
 
-export interface HeaderProps {
+export interface HeaderBasicProps {
   title: string;
   filter: string;
 }
 
-export const Header: FC<HeaderProps> = ({ title, filter }) => {
+export const HeaderBasic: FC<HeaderBasicProps> = ({ title, filter }) => {
   const { navigate } = useNavigation();
   const characterFilter = useCharacterFilter();
   const episodeFilter = useEpisodeFilter();

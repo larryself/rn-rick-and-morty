@@ -2,7 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { CharacterDetail, CharacterScreen } from 'src/modules/character';
-import { ButtonBack, HeaderFilter } from 'src/ui';
+import { ButtonBack, HeaderDetailed } from 'src/ui';
 
 import { Routes } from './routes';
 
@@ -18,7 +18,10 @@ export const CharacterStack = () => {
         options={{
           header: ({ options }) => {
             return (
-              <HeaderFilter title={options.title ?? ''} left={<ButtonBack />} />
+              <HeaderDetailed
+                title={options.title ?? ''}
+                left={<ButtonBack />}
+              />
             );
           },
         }}

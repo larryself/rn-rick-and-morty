@@ -7,7 +7,7 @@ import {
   useGetLocationsTypeQuery,
 } from 'src/graphql/generated/graphql';
 import { useNavigation } from 'src/navigation/routes';
-import { ButtonClear, ButtonOval, HeaderFilter, Search } from 'src/ui';
+import { ButtonClear, ButtonOval, HeaderDetailed, Search } from 'src/ui';
 import { getValues } from 'src/utils';
 
 import { Container } from './style';
@@ -76,7 +76,7 @@ export const LocationFilter = () => {
 
   return (
     <Container>
-      <HeaderFilter
+      <HeaderDetailed
         title={'Filter'}
         right={<ButtonOval onPress={handleApply} title={'Apply'} />}
         left={

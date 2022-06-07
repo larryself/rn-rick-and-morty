@@ -2,7 +2,13 @@ import React, { FC, useState } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { Arrow } from 'assets/images/icons/arrow';
 
-import { ButtonBack, HeaderFilter, Line, ModalMenu, SearchInput } from 'src/ui';
+import {
+  ButtonBack,
+  HeaderDetailed,
+  Line,
+  ModalMenu,
+  SearchInput,
+} from 'src/ui';
 
 import {
   Box,
@@ -61,7 +67,7 @@ export const Search: FC<SearchProps> = ({
       </Container>
       <Line />
       <ModalMenu setShowModal={setVisible} showModal={visible}>
-        <HeaderFilter title={title} left={<ButtonBack />} />
+        <HeaderDetailed title={title} left={<ButtonBack />} />
         <SearchInput value={value} setValue={setValue} />
         <Box>
           <FlatList
@@ -70,6 +76,7 @@ export const Search: FC<SearchProps> = ({
             renderItem={renderItem}
             keyExtractor={(item) => item}
             showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ flexGrow: 1 }}
           />
         </Box>
       </ModalMenu>

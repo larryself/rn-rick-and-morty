@@ -6,7 +6,7 @@ import { CharacterScreen } from 'src/modules/character';
 import { EpisodeScreen } from 'src/modules/episode';
 import { LocationScreen } from 'src/modules/location';
 import { COLORS } from 'src/theme/colors';
-import { Header } from 'src/ui';
+import { HeaderBasic } from 'src/ui';
 
 import { Routes } from './routes';
 
@@ -29,7 +29,7 @@ export const TabBar = () => {
             const title = 'Character';
 
             return (
-              <Header
+              <HeaderBasic
                 {...props}
                 title={title}
                 filter={Routes.CharacterFilter}
@@ -48,7 +48,11 @@ export const TabBar = () => {
             const title = 'Location';
 
             return (
-              <Header {...props} title={title} filter={Routes.LocationFilter} />
+              <HeaderBasic
+                {...props}
+                title={title}
+                filter={Routes.LocationFilter}
+              />
             );
           },
         }}
@@ -63,7 +67,11 @@ export const TabBar = () => {
             const title = 'Episode';
 
             return (
-              <Header {...props} title={title} filter={Routes.EpisodeFilter} />
+              <HeaderBasic
+                {...props}
+                title={title}
+                filter={Routes.EpisodeFilter}
+              />
             );
           },
         }}

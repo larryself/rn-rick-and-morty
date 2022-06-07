@@ -6,7 +6,7 @@ import {
   useGetCharactersSpeciesQuery,
 } from 'src/graphql/generated/graphql';
 import { useNavigation } from 'src/navigation/routes';
-import { ButtonClear, ButtonOval, HeaderFilter, Radio, Search } from 'src/ui';
+import { ButtonClear, ButtonOval, HeaderDetailed, Radio, Search } from 'src/ui';
 import { fields, getValues } from 'src/utils';
 
 import { Container, Inner } from './style';
@@ -78,7 +78,7 @@ export const CharacterFilter = () => {
   return (
     <Container>
       <Inner>
-        <HeaderFilter
+        <HeaderDetailed
           title={'Filter'}
           right={<ButtonOval onPress={handleApply} title={'Apply'} />}
           left={

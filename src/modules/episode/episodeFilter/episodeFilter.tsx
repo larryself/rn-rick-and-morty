@@ -3,7 +3,13 @@ import React, { useState } from 'react';
 import { useEpisodeFilter } from 'src/graphql/client/episodeFilter';
 import { useGetEpisodesNameQuery } from 'src/graphql/generated/graphql';
 import { useNavigation } from 'src/navigation/routes';
-import { ButtonClear, ButtonOval, HeaderFilter, Search, Select } from 'src/ui';
+import {
+  ButtonClear,
+  ButtonOval,
+  HeaderDetailed,
+  Search,
+  Select,
+} from 'src/ui';
 import { fields, getValues } from 'src/utils';
 
 import { Container } from './style';
@@ -53,7 +59,7 @@ export const EpisodeFilter = () => {
 
   return (
     <Container>
-      <HeaderFilter
+      <HeaderDetailed
         title={'Filter'}
         right={<ButtonOval onPress={handleApply} title={'Apply'} />}
         left={
